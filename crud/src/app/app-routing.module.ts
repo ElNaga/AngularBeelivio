@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { MainBodyComponent } from './main-body/main-body.component';
+import { MainBodyComponent } from './components/main-body/main-body.component';
 
 // Define your routes here
 const routes: Routes = [
