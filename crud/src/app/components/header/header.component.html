@@ -1,7 +1,13 @@
 <mat-card class="header-wrapper">
-    <div class="header-logo">
+    <div class="header-logo" (click)="goToPage('home')">
         <img src="../../assets/images/marathonLogo.svg" alt="header-logo">
     </div>
-    <button mat-stroked-button>Marathon List</button>
-    <button mat-stroked-button>My Marathons</button>
+    <button 
+        mat-stroked-button
+        (click)="goToPage('marathons')"
+        >Marathon List</button>
+    <button 
+        mat-stroked-button
+        (click)="goToPage('mymarathons')"
+        >My Marathons</button>
 </mat-card>

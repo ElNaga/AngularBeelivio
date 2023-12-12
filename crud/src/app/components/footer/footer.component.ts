@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationService } from 'src/app/navigation.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+  constructor(private navigationService: NavigationService) { }
+
+  goToPage(page: string): void {
+    this.navigationService.navigateTo(page);
+  }
 }
