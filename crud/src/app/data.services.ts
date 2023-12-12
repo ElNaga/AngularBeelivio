@@ -42,19 +42,19 @@ export class MarathonsService implements InMemoryDbService {
           {
             id: 1,
             name: 'Skopje 5km Race',
-            Location: 'Skopje',
+            location: 'Skopje',
             distance: RacesEnum.Trka5km
           },
           {
             id: 2,
             name: 'Prilep Marathon',
-            Location: 'Prilep',
+            location: 'Prilep',
             distance: RacesEnum.Trka21km
           },
           {
             id: 3,
             name: 'Belgrad Marathon',
-            Location: 'Belgrad',
+            location: 'Belgrad',
             distance: RacesEnum.Trka41km
           }
         ]

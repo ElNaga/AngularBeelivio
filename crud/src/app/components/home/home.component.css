@@ -10,6 +10,5 @@
 
 .router-outlet-div {
     height: 100%;
-    background-color: yellowgreen;
     margin: 5px;
 }

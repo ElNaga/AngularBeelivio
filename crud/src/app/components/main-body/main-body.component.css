@@ -2,15 +2,13 @@
     display: flex;
     flex-direction: row;
     overflow-y: auto;
-    /* padding: 15px; */
-    /* width: 100%; */
     height: 100%;
-    margin: 5px;
-    /* gap: 5px; */
+    /* margin: 5px; */
     justify-content: space-between;
-    align-items: end;
+    gap: 5px;
 }
 
 .feature-card {
     height: 100%;
+    width: 100%;
 }
