@@ -1,1 +1,7 @@
-<div class="featured-card-wrapper">featured-card works!</div>
+<div class="featured-card-wrapper">
+    <ul>
+        <li *ngFor="let marathon of marathons.marathons">
+            Name: {{ marathon.name }}, Location: {{ marathon.location }}, Date: {{marathon.date.toISOString().substring(0,10)}}
+        </li>
+    </ul>
+</div>
