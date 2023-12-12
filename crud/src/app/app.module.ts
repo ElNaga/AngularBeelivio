@@ -9,10 +9,11 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainBodyComponent } from './main-body/main-body.component';
-import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -29,10 +30,7 @@ import { RouterModule } from '@angular/router';
     HttpClientInMemoryWebApiModule.forRoot(MarathonsService),
     HttpClientInMemoryWebApiModule.forRoot(UserService),
     BrowserAnimationsModule,
-    RouterModule.forRoot([
-      { path: 'home', component: HomeComponent },
-      { path: '**', redirectTo: 'home', pathMatch: 'full' }
-    ])
+    AppRoutingModule
   ],
   providers: [
     MarathonsService,

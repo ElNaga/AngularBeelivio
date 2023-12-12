@@ -1,4 +1,14 @@
 .header-wrapper {
-    /* flex-shrink: 0;
-    color: blue; */
+    padding: 15px;
+    background-color: #c6c6c6;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+
+img {
+    background-color: transparent;
+    height: 40px;
+    width: 40px;
 }
