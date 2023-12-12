@@ -7,3 +7,9 @@
 .app-main-body {
     height: 100%;
 }
+
+router-outlet {
+    /* height: 100%; */
+    background-color: yellowgreen;
+    margin: 5px;
+}
