@@ -1,0 +1,35 @@
+.maraton-row-card-wrapper {
+    padding: 1em;
+    background-color: #64748f;
+    text-align: center;
+}
+
+.maraton-row__name {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.labels-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.maraton-row__location{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.row-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.maraton-row__date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
