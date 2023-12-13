@@ -7,9 +7,10 @@ import { Marathon, MarathonsDb } from 'src/app/models/marathon.interface';
   styleUrls: ['./featured-card.component.css']
 })
 export class FeaturedCardComponent implements OnInit {
-  @Input() marathonsDated: MarathonsDb = {} as MarathonsDb;
+  @Input() futureMarathons: Marathon[] = [] as Marathon[];
+  currentDate = new Date();
   
   async ngOnInit() {
-    console.log( this.marathonsDated)
+    console.log( 'this is from future card',this.futureMarathons)
   }
 }

@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FeaturedCardComponent } from './components/featured-card/featured-card.component';
 import { MyMarathonsComponent } from './components/my-marathons/my-marathons.component';
 import { MarathonsComponent } from './components/marathons/marathons.component';
+import { MarathonRowCardComponent } from './components/marathon-row-card/marathon-row-card.component';
+import { PastCardComponent } from './components/past-card/past-card.component';
 
 @NgModule({
   declarations: [
@@ -27,15 +29,17 @@ import { MarathonsComponent } from './components/marathons/marathons.component';
     MainBodyComponent,
     FeaturedCardComponent,
     MyMarathonsComponent,
-    MarathonsComponent
+    MarathonsComponent,
+    MarathonRowCardComponent,
+    PastCardComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
-    HttpClientInMemoryWebApiModule.forRoot(MarathonsService),
-    HttpClientInMemoryWebApiModule.forRoot(UserService),
+    // HttpClientInMemoryWebApiModule.forRoot(MarathonsService),
+    // HttpClientInMemoryWebApiModule.forRoot(UserService),
     BrowserAnimationsModule,
     AppRoutingModule
   ],

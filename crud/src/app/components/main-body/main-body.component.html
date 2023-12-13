@@ -1,8 +1,12 @@
-<div class="main-wrapper">
+<div class="main-content-wrapper">
     <app-featured-card 
         class="feature-card" 
-        *ngFor="let marathons of marathonsSeparated"
-        [marathonsDated]="marathons"
+        [futureMarathons]="futureMarathons"
         >
     </app-featured-card>
+    <app-past-card 
+        class="feature-card" 
+        [pastMarathons]="pastMarathons"
+        >
+    </app-past-card>
 </div>

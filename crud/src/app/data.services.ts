@@ -7,7 +7,7 @@ import { MarathonsDb } from './models/marathon.interface';
   providedIn: 'root'
 })
 
-export class UserService implements InMemoryDbService {
+export class UserService  {
     constructor() { }
     createDb() {
       return {
@@ -35,7 +35,7 @@ export class UserService implements InMemoryDbService {
     }
   }
 
-export class MarathonsService implements InMemoryDbService {
+export class MarathonsService {
     constructor() { }
     createDb(): MarathonsDb {
       return {
@@ -58,6 +58,20 @@ export class MarathonsService implements InMemoryDbService {
             id: 3,
             name: 'Belgrad Marathon',
             location: 'Belgrad',
+            distance: RacesEnum.Trka41km,
+            date: new Date("2019-07-30")
+          },
+          {
+            id: 4,
+            name: 'Veles Marathon',
+            location: 'Veles',
+            distance: RacesEnum.Trka41km,
+            date: new Date("2019-07-30")
+          },
+          {
+            id: 5,
+            name: 'Ohrid Marathon',
+            location: 'Ohrid',
             distance: RacesEnum.Trka41km,
             date: new Date("2019-07-30")
           }

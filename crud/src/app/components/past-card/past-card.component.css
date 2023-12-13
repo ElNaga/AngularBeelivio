@@ -1,4 +1,4 @@
-.future-card-wrapper {
+.past-card-wrapper {
     background-color: #c6c6c6;
     height: 100%;
     width: 100%;
@@ -12,14 +12,14 @@
     /* background-color: rebeccapurple; */
 /* } */
 
-.future-card-title {
+.past-card-title {
     height: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.future-card-rows-wrapper {
+.past-card-rows-wrapper {
     height: 70%;
     display: flex;
     flex-wrap: wrap;
@@ -27,7 +27,7 @@
     justify-content: center;
 }
 
-.future-card-rows {
+.past-card-rows {
     width: 33.333%;
     display: flex;
     flex: 0 0 auto;

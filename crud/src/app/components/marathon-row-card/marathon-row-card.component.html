@@ -1,0 +1,11 @@
+<mat-card class="maraton-row--card-wrapper">
+    <div class="maraton-row__name">{{marathonData.name}}</div>
+    <div>
+        <div class="maraton-row__location">
+            Location: {{marathonData.location}}
+        </div>
+        <div class="maraton-row__date">
+            Date: {{marathonData.date.toISOString().substring(0,10)}}
+        </div>
+    </div>
+</mat-card>

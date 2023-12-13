@@ -1,0 +1,11 @@
+<mat-card class="past-card-wrapper">
+    <div class="past-card-title">
+        <h2>Past Marathons</h2>
+    </div>
+<div class="past-card-rows-wrapper">
+    <div class="past-card-rows" *ngFor="let marathon of pastMarathons">
+        <!-- Name: {{ marathon.name }}, Location: {{ marathon.location }}, Date: {{marathon.date.toISOString().substring(0,10)}} -->
+        <app-marathon-row-card class="past-card-marathons" [marathonData]="marathon"></app-marathon-row-card>
+    </div>
+</div>
+</mat-card>
