@@ -33,3 +33,7 @@
     align-items: center;
     flex-direction: column;
 }
+
+::ng-deep .mat-menu-class .cdk-overlay-pane {
+    transform: translateX(100%) !important;
+}
