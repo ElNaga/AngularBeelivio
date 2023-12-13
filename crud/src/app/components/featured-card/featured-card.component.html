@@ -7,7 +7,7 @@
         <form class="future-card-form">
             <mat-form-field class="future-card_mat_form_field">
                 <mat-label>Search Marathons</mat-label>
-                <input matInput placeholder="Search...">
+                <input [(ngModel)]="searchString" matInput placeholder="Search..." name="something">
             </mat-form-field>
         </form>
         <div class="searchable-toggle">
@@ -16,9 +16,10 @@
             </mat-slide-toggle>
         </div>
     </div>
+    <button (click)="printInput(searchString)">Click me</button>
 
     <div class="future-card-rows-wrapper">
-        <div class="future-card-rows" *ngFor="let marathon of futureMarathons">
+        <div class="future-card-rows" *ngFor="let marathon of filterdMarathons">
             <app-marathon-row-card class="future-card-marathons" [marathonData]="marathon"></app-marathon-row-card>
         </div>
     </div>
