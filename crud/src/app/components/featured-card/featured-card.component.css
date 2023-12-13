@@ -5,18 +5,40 @@
 
 }
 
-/* .past-card-marathons {
-    display: flex;
-    flex-direction: row;
-    /* flex: 0 0 33.333%; */
-    /* background-color: rebeccapurple; */
-/* } */
-
 .future-card-title {
     height: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.future-card-search-wrapper {
+    display: flex;
+    flex-direction: row;
+    /* justify-content:flex-start; */
+    /* align-items: center; */
+}
+
+.future-card-form {
+    display: flex;
+    justify-content: center;
+
+    flex-grow: 1;
+    gap: 10px;
+}
+
+.future-card_mat_form_field{
+    width: 70%;
+}
+
+.searchable-toggle {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+mat-label {
+    padding-bottom: 10px;
 }
 
 .future-card-rows-wrapper {

@@ -4,6 +4,10 @@ import {MatCardModule} from '@angular/material/card'
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { MarathonsService, UserService } from './data.services';
 import { HttpClientModule } from '@angular/common/http';
@@ -42,6 +46,10 @@ import { PastCardComponent } from './components/past-card/past-card.component';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatSlideToggleModule,
     // HttpClientInMemoryWebApiModule.forRoot(MarathonsService),
     // HttpClientInMemoryWebApiModule.forRoot(UserService),
     BrowserAnimationsModule,

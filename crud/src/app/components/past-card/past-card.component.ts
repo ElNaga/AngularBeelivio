@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { Marathon } from 'src/app/models/marathon.interface';
 
 @Component({
@@ -8,4 +9,9 @@ import { Marathon } from 'src/app/models/marathon.interface';
 })
 export class PastCardComponent {
 @Input () pastMarathons: Marathon[] = [] as Marathon[];
+
+color: ThemePalette = 'accent';
+checked = false;
+disabled = false;
+
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {ThemePalette} from '@angular/material/core'
 import { Marathon, MarathonsDb } from 'src/app/models/marathon.interface';
 
 @Component({
@@ -8,7 +9,11 @@ import { Marathon, MarathonsDb } from 'src/app/models/marathon.interface';
 })
 export class FeaturedCardComponent implements OnInit {
   @Input() futureMarathons: Marathon[] = [] as Marathon[];
-  currentDate = new Date();
+
+  color: ThemePalette = 'accent';
+  checked = false;
+  disabled = false;
+
   
   async ngOnInit() {
     console.log( 'this is from future card',this.futureMarathons)

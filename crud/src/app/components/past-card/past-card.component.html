@@ -2,6 +2,19 @@
     <div class="past-card-title">
         <h2>Past Marathons</h2>
     </div>
+    <div class="past-card-search-wrapper">
+        <form class="past-card-form">
+            <mat-form-field class="past-card_mat_form_field">
+                <mat-label>Search Marathons</mat-label>
+                <input matInput placeholder="Search...">
+            </mat-form-field>
+        </form>
+        <div class="searchable-toggle">
+            <mat-label>Sort by disctance</mat-label>
+            <mat-slide-toggle class="example-margin" [color]="color" [checked]="checked" [disabled]="disabled">
+            </mat-slide-toggle>
+        </div>
+    </div>
 <div class="past-card-rows-wrapper">
     <div class="past-card-rows" *ngFor="let marathon of pastMarathons">
         <!-- Name: {{ marathon.name }}, Location: {{ marathon.location }}, Date: {{marathon.date.toISOString().substring(0,10)}} -->
