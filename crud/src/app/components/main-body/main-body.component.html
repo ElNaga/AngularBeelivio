@@ -1,4 +1,8 @@
 <div class="main-wrapper">
-    <app-featured-card [marathons]="marathons" class="feature-card"></app-featured-card>
-    <app-featured-card class="feature-card"></app-featured-card>
+    <app-featured-card 
+        class="feature-card" 
+        *ngFor="let marathons of marathonsSeparated"
+        [marathonsDated]="marathons"
+        >
+    </app-featured-card>
 </div>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { RacesEnum } from './enums/race-distance.enum';
+import { MarathonsDb } from './models/marathon.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -36,26 +37,29 @@ export class UserService implements InMemoryDbService {
 
 export class MarathonsService implements InMemoryDbService {
     constructor() { }
-    createDb() {
+    createDb(): MarathonsDb {
       return {
         marathons: [
           {
             id: 1,
             name: 'Skopje 5km Race',
             location: 'Skopje',
-            distance: RacesEnum.Trka5km
+            distance: RacesEnum.Trka5km,
+            date: new Date("2015-03-25")
           },
           {
             id: 2,
             name: 'Prilep Marathon',
             location: 'Prilep',
-            distance: RacesEnum.Trka21km
+            distance: RacesEnum.Trka21km,
+            date: new Date("2024-03-25")
           },
           {
             id: 3,
             name: 'Belgrad Marathon',
             location: 'Belgrad',
-            distance: RacesEnum.Trka41km
+            distance: RacesEnum.Trka41km,
+            date: new Date("2019-07-30")
           }
         ]
       };
