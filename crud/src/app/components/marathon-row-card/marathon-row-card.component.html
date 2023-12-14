@@ -5,15 +5,22 @@
             <span class="row-label"> <mat-icon> location_on</mat-icon> </span>{{marathonData.location}}
         </div>
         <div class="maraton-row__date">
-            <span class="row-label"> <mat-icon> calendar_today</mat-icon> </span>{{marathonData.date.toISOString().substring(0,10)}}
+            <span class="row-label"> <mat-icon> calendar_today</mat-icon>
+            </span>{{marathonData.date.toISOString().substring(0,10)}}
         </div>
         <div class="maraton-row__distance">
             <!-- <span class="row-label"> Distance to run: </span>{{marathonData.distance}} -->
         </div>
     </div>
+    <div class="marathon-row-bottom-coins-wrapper">
+        <div class="marathon-row-bottom-coins" class="circle" *ngFor="let race of marathonData.races"
+            [ngClass]="'circle-' + race.distance">
+            {{race.distance}}
+        </div>
+    </div>
 </mat-card>
 
-<mat-menu class="mat-menu-class" #editMarathonMenu="matMenu"  xPosition="after">
+<mat-menu class="mat-menu-class" #editMarathonMenu="matMenu" xPosition="after">
     <button mat-menu-item>Item 1</button>
     <button mat-menu-item>Item 2</button>
 </mat-menu>

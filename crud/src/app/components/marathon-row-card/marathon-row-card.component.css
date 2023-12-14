@@ -27,6 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-right: 5px ;
 }
 
 .maraton-row__date {
@@ -39,3 +40,35 @@
 ::ng-deep .mat-menu-class .cdk-overlay-pane {
     transform: translateX(100%) !important;
 }
+
+.marathon-row-bottom-coins-wrapper {
+    display: flex;
+    margin-top: 5px;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    text-align: center;
+    background-color: #000000;
+    font-size: small;
+    font-weight: 900;
+    color: white;
+  }
+  
+  /* You can add specific styles for each distance if needed */
+  .circle-5 { 
+    background-color: #f6546a;
+  }
+  .circle-10 { 
+    background-color: #0a75ad;
+   }
+
+   .circle-21 {
+    background-color: #794044;
+   }
