@@ -11,6 +11,28 @@
 .modal-card-description{
  font-weight: 300;
  margin-bottom: 20px;
+ transition: all 0.3s ease;
+ height: fit-content;
+}
+
+.modal-card-description.text-view {
+    /* Styles for the text view */
+    padding: 10px; /* Example padding */
+    border: 1px solid transparent; /* Invisible border to match height */
+    /* Other styles to match your design (font, color, etc.) */
+}
+
+.modal-card-description.input-view {
+    /* Styles for the input view */
+    padding: 10px; /* Same padding as text view */
+    border: 1px solid #ccc; /* Visible border for input */
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding and border in width */
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    background-color: inherit;
+    /* Other matching styles (font, color, etc.) */
 }
 
 .modal-card-info-wrapper {

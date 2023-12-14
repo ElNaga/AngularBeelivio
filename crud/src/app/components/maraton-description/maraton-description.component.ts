@@ -14,6 +14,10 @@ export class MaratonDescriptionComponent {
       console.log(data)
     }
 
+    isEditingDescription = false;
+
+    
+
     getRaceClass(numberOfRaces: number): string {
       if (numberOfRaces === 1) {
           return 'one-race';
