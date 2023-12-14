@@ -42,58 +42,114 @@ export class MarathonsService {
         marathons: [
           {
             id: 1,
-            name: 'Skopje 5km Race',
-            location: 'Skopje',
+            name: "New York City Marathon",
+            location: "New York, USA",
             distance: RacesEnum.Trka5km,
-            date: new Date("2015-03-25")
-          },          {
-            id: 6,
-            name: 'Wizz Air Marathon',
-            location: 'Skopje',
-            distance: RacesEnum.Trka5km,
-            date: new Date("2015-03-25")
+            races: [
+              { distance: RacesEnum.Trka5km, date: new Date("2023-05-15") },
+              { distance: RacesEnum.Trka10km, date: new Date("2023-05-16") },
+            ],
+            date: new Date("2023-05-14"),
           },
           {
             id: 2,
-            name: 'Prilep Marathon',
-            location: 'Prilep',
-            distance: RacesEnum.Trka21km,
-            date: new Date("2024-03-25")
+            name: "London Marathon",
+            location: "London, UK",
+            distance: RacesEnum.Trka10km,
+            races: [
+              { distance: RacesEnum.Trka10km, date: new Date("2023-06-20") },
+              { distance: RacesEnum.Trka21km, date: new Date("2023-06-21") },
+            ],
+            date: new Date("2023-06-19"),
           },
           {
             id: 3,
-            name: 'Belgrad Marathon',
-            location: 'Belgrad',
-            distance: RacesEnum.Trka41km,
-            date: new Date("2019-07-30")
+            name: "Berlin Marathon",
+            location: "Berlin, Germany",
+            distance: RacesEnum.Trka21km,
+            races: [
+              { distance: RacesEnum.Trka21km, date: new Date("2023-07-25") },
+              { distance: RacesEnum.Trka41km, date: new Date("2023-07-26") },
+            ],
+            date: new Date("2023-07-24"),
           },
           {
             id: 4,
-            name: 'Veles Marathon',
-            location: 'Veles',
-            distance: RacesEnum.Trka41km,
-            date: new Date("2019-07-30")
-          },
-          {
-            id: 5,
-            name: 'Ohrid Marathon',
-            location: 'Ohrid',
-            distance: RacesEnum.Trka41km,
-            date: new Date("2019-07-30")
-          },
-          {
-            id: 5,
-            name: 'Mortar Marathon',
-            location: 'Ohrid',
+            name: "Chicago Marathon",
+            location: "Chicago, USA",
             distance: RacesEnum.Trka5km,
-            date: new Date("2019-07-30")
-          },          {
+            races: [
+              { distance: RacesEnum.Trka5km, date: new Date("2023-09-10") },
+              { distance: RacesEnum.Trka10km, date: new Date("2023-09-11") },
+            ],
+            date: new Date("2023-09-09"),
+          },
+          {
             id: 5,
-            name: 'Volba Marathon',
-            location: 'Ohrid',
+            name: "Tokyo Marathon",
+            location: "Tokyo, Japan",
+            distance: RacesEnum.Trka10km,
+            races: [
+              { distance: RacesEnum.Trka10km, date: new Date("2023-10-15") },
+              { distance: RacesEnum.Trka21km, date: new Date("2023-10-16") },
+            ],
+            date: new Date("2023-10-14"),
+          },
+          {
+            id: 6,
+            name: "Paris Marathon",
+            location: "Paris, France",
             distance: RacesEnum.Trka21km,
-            date: new Date("2019-07-30")
-          }
+            races: [
+              { distance: RacesEnum.Trka21km, date: new Date("2023-11-12") },
+              { distance: RacesEnum.Trka41km, date: new Date("2023-11-13") },
+            ],
+            date: new Date("2023-11-11"),
+          },
+          {
+            id: 7,
+            name: "Boston Marathon",
+            location: "Boston, USA",
+            distance: RacesEnum.Trka5km,
+            races: [
+              { distance: RacesEnum.Trka5km, date: new Date("2024-04-15") },
+              { distance: RacesEnum.Trka10km, date: new Date("2024-04-16") },
+            ],
+            date: new Date("2024-04-14"),
+          },
+          {
+            id: 8,
+            name: "Sydney Marathon",
+            location: "Sydney, Australia",
+            distance: RacesEnum.Trka10km,
+            races: [
+              { distance: RacesEnum.Trka10km, date: new Date("2024-07-08") },
+              { distance: RacesEnum.Trka21km, date: new Date("2024-07-09") },
+            ],
+            date: new Date("2024-07-07"),
+          },
+          {
+            id: 9,
+            name: "Rome Marathon",
+            location: "Rome, Italy",
+            distance: RacesEnum.Trka21km,
+            races: [
+              { distance: RacesEnum.Trka21km, date: new Date("2024-09-21") },
+              { distance: RacesEnum.Trka41km, date: new Date("2024-09-22") },
+            ],
+            date: new Date("2024-09-20"),
+          },
+          {
+            id: 10,
+            name: "Rio de Janeiro Marathon",
+            location: "Rio de Janeiro, Brazil",
+            distance: RacesEnum.Trka5km,
+            races: [
+              { distance: RacesEnum.Trka5km, date: new Date("2024-11-15") },
+              { distance: RacesEnum.Trka10km, date: new Date("2024-11-16") },
+            ],
+            date: new Date("2024-11-14"),
+          },
         ]
       };
     }

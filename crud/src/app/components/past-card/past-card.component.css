@@ -63,3 +63,7 @@ mat-label {
     align-items: center;
     justify-content: space-around;
 }
+
+.past-card-marathons {
+    min-width: 90%;
+}

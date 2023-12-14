@@ -2,13 +2,13 @@
     <div class="maraton-row__name">{{marathonData.name}}</div>
     <div class="labels-wrapper">
         <div class="maraton-row__location">
-            <span class="row-label"> Location <mat-icon> location_on</mat-icon> </span>{{marathonData.location}}
+            <span class="row-label"> <mat-icon> location_on</mat-icon> </span>{{marathonData.location}}
         </div>
         <div class="maraton-row__date">
-            <span class="row-label"> Date: </span>{{marathonData.date.toISOString().substring(0,10)}}
+            <span class="row-label"> <mat-icon> calendar_today</mat-icon> </span>{{marathonData.date.toISOString().substring(0,10)}}
         </div>
-        <div class="maraton-row__distamce">
-            <span class="row-label"> Distance to run: </span>{{marathonData.distance}}
+        <div class="maraton-row__distance">
+            <!-- <span class="row-label"> Distance to run: </span>{{marathonData.distance}} -->
         </div>
     </div>
 </mat-card>

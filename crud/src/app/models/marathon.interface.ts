@@ -5,9 +5,15 @@ export interface Marathon {
   name: string;
   location: string;
   distance: RacesEnum;
+  races: Race[];
   date: Date;
 }
 
 export interface MarathonsDb {
   marathons: Marathon[];
+}
+
+export interface Race {
+  distance: RacesEnum;
+  date: Date;
 }
