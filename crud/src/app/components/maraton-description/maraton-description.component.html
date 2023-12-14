@@ -1,0 +1,23 @@
+<mat-card>
+    <div class="modal-card-wrapper">
+        <div class="modal-title">
+            {{data.marathon.name}}
+        </div>
+        <div class="modal-card-description">
+            {{data.marathon.description}}
+        </div>
+        <div>
+            Available races in this marathon:
+        </div>
+        <div class="modal-card-info-wrapper">
+            <div class="modal-card-info" *ngFor="let race of data.marathon.races">
+                <div class="modal-card-race-km">
+                    <span><mat-icon>directions_run</mat-icon></span> {{race.distance}}km
+                </div>
+                <div class="modal-card-date">
+                    <span><mat-icon>calendar_today</mat-icon></span> {{race.date.toISOString().substring(0,10)}}
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>

@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {ThemePalette} from '@angular/material/core'
+import { ThemePalette } from '@angular/material/core'
 import { Marathon, MarathonsDb } from 'src/app/models/marathon.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { MaratonDescriptionComponent } from '../maraton-description/maraton-description.component';
+
 
 @Component({
   selector: 'app-featured-card',
@@ -9,6 +12,8 @@ import { Marathon, MarathonsDb } from 'src/app/models/marathon.interface';
 })
 export class FeaturedCardComponent implements OnInit {
   @Input() futureMarathons: Marathon[] = [] as Marathon[];
+  constructor(public dialog: MatDialog) { }
+
   searchString: string = '';
   shouldSort: boolean = false;
 
@@ -16,12 +21,18 @@ export class FeaturedCardComponent implements OnInit {
   checked = false;
   disabled = false;
 
-  printInput (string: any): void {
+  printInput(string: any): void {
     console.log(string);
   }
-  
+
   async ngOnInit() {
-    console.log( 'this is from future card',this.futureMarathons)
-    console.log( 'this is from future card',this.futureMarathons)
+    console.log('this is from future card', this.futureMarathons)
+  }
+
+  openModal(marathonData: Marathon): void {
+    this.dialog.open(MaratonDescriptionComponent, {
+      width: '40%',
+      data: {marathon: marathonData}
+    });
   }
 }

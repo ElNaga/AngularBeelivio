@@ -9,6 +9,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FilterPipe } from './pipes/filter.pipe';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 import { MarathonsService, UserService } from './data.services';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,6 +27,7 @@ import { MyMarathonsComponent } from './components/my-marathons/my-marathons.com
 import { MarathonsComponent } from './components/marathons/marathons.component';
 import { MarathonRowCardComponent } from './components/marathon-row-card/marathon-row-card.component';
 import { PastCardComponent } from './components/past-card/past-card.component';
+import { MaratonDescriptionComponent } from './components/maraton-description/maraton-description.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { PastCardComponent } from './components/past-card/past-card.component';
     MarathonsComponent,
     MarathonRowCardComponent,
     PastCardComponent,
-    FilterPipe
+    FilterPipe,
+    MaratonDescriptionComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { PastCardComponent } from './components/past-card/past-card.component';
     MatFormFieldModule,
     FormsModule,
     MatSlideToggleModule,
+    MatDialogModule,
     // HttpClientInMemoryWebApiModule.forRoot(MarathonsService),
     // HttpClientInMemoryWebApiModule.forRoot(UserService),
     BrowserAnimationsModule,

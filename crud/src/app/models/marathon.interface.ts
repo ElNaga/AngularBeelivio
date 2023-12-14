@@ -6,6 +6,7 @@ export interface Marathon {
   location: string;
   distance: RacesEnum;
   races: Race[];
+  description: string;
   date: Date;
 }
 

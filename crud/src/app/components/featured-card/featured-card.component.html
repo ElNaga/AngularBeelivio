@@ -20,7 +20,7 @@
 
     <div class="future-card-rows-wrapper">
         <div class="future-card-rows" *ngFor="let marathon of futureMarathons | filter:searchString:shouldSort">
-            <app-marathon-row-card class="future-card-marathons" [marathonData]="marathon"></app-marathon-row-card>
+            <app-marathon-row-card (click)="openModal(marathon)" class="future-card-marathons" [marathonData]="marathon"></app-marathon-row-card>
         </div>
     </div>
 </mat-card>

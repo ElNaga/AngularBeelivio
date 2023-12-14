@@ -1,0 +1,62 @@
+.modal-card-wrapper{
+    padding: 15px;
+    background-color: antiquewhite;
+}
+
+.modal-title{
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+.modal-card-description{
+ font-weight: 300;
+ margin-bottom: 20px;
+}
+
+.modal-card-info-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.modal-card-info{
+    display: flex;
+    flex-direction: column;
+}   
+
+.modal-card-race-km{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-card-date{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+.one-race {
+    justify-content: center;
+}
+
+.two-races {
+    justify-content: space-between;
+}
+
+.three-races {
+    justify-content: space-around;
+}
+
+.four-or-more-races {
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.modal-card-info {
+    flex: 1; /* This ensures that the boxes take equal width */
+    margin: 10px; /* Optional: for spacing between boxes in wrap */
+}
+

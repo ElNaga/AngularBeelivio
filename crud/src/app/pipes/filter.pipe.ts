@@ -33,7 +33,7 @@ export class FilterPipe implements PipeTransform {
 
     searchString = searchString.toLowerCase();
 
-    return marathons.filter(marathon => {
+    return sortedMarathons.filter(marathon => {
       return marathon.name.toLowerCase().includes(searchString) || marathon.location.toLowerCase().includes(searchString);
     });
   }
