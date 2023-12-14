@@ -18,13 +18,22 @@ export class FilterPipe implements PipeTransform {
 
   // Magijata e transform() + angular Pipe library shto kje mi ovozmozhi da si go koristam direkt pipe-ot vo komponenta so dekorator @Pipe({name: KAKO_SE_VIKA_PIPE-ot})
 
-  transform(marathons: Marathon[], searchString: string): Marathon[] {
+  transform(marathons: Marathon[], searchString: string, shouldSort: boolean): Marathon[] {
     if (!marathons) return [];
-    if (!searchString) return marathons;
+    let sortedMarathons = marathons;
+
+      if (shouldSort) {
+        sortedMarathons = sortedMarathons.slice().sort((a: Marathon, b: Marathon) => {
+          return a.distance - b.distance
+        })
+      }
+
+      if (!searchString) return sortedMarathons;
+    
 
     searchString = searchString.toLowerCase();
     return marathons.filter(marathon => {
-      return marathon.name.toLowerCase().includes(searchString);
+      return marathon.name.toLowerCase().includes(searchString) || marathon.location.toLowerCase().includes(searchString);
     })
   }
 

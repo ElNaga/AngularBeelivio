@@ -8,6 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { FilterPipe } from './pipes/filter.pipe';
 
 import { MarathonsService, UserService } from './data.services';
 import { HttpClientModule } from '@angular/common/http';
@@ -37,7 +38,8 @@ import { PastCardComponent } from './components/past-card/past-card.component';
     MyMarathonsComponent,
     MarathonsComponent,
     MarathonRowCardComponent,
-    PastCardComponent
+    PastCardComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

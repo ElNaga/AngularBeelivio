@@ -9,6 +9,8 @@ import { Marathon } from 'src/app/models/marathon.interface';
 })
 export class PastCardComponent {
 @Input () pastMarathons: Marathon[] = [] as Marathon[];
+searchString: string = '';
+shouldSort: boolean= false;
 
 color: ThemePalette = 'accent';
 checked = false;

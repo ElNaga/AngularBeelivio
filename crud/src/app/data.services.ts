@@ -46,6 +46,12 @@ export class MarathonsService {
             location: 'Skopje',
             distance: RacesEnum.Trka5km,
             date: new Date("2015-03-25")
+          },          {
+            id: 6,
+            name: 'Wizz Air Marathon',
+            location: 'Skopje',
+            distance: RacesEnum.Trka5km,
+            date: new Date("2015-03-25")
           },
           {
             id: 2,
@@ -73,6 +79,19 @@ export class MarathonsService {
             name: 'Ohrid Marathon',
             location: 'Ohrid',
             distance: RacesEnum.Trka41km,
+            date: new Date("2019-07-30")
+          },
+          {
+            id: 5,
+            name: 'Mortar Marathon',
+            location: 'Ohrid',
+            distance: RacesEnum.Trka5km,
+            date: new Date("2019-07-30")
+          },          {
+            id: 5,
+            name: 'Volba Marathon',
+            location: 'Ohrid',
+            distance: RacesEnum.Trka21km,
             date: new Date("2019-07-30")
           }
         ]
