@@ -4,11 +4,51 @@
     margin: 5px;
     display: flex;
     flex-direction: row;
-    justify-content:space-around;
+    justify-content:space-between;
 }
 
-img {
+.header-logo img {
     background-color: transparent;
     height: 40px;
     width: 40px;
+}
+
+.footer-left-info-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 15%;
+}
+
+.footer-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.the-line-footer {
+    border: 1px solid rgba(123, 123, 123, 0.5); /* Makes a vertical line */
+    border-radius: 30%;
+    height: 1lm; /* Adjust as per the design */
+}
+
+.right-info-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding-right: 10%;
+}
+
+.contact-footer-title {
+    font-weight: 700;
+    margin-bottom: 5%;
+    color: #3a3a3a;
+}
+
+.text-footer {
+    font-weight: 300;
+    font-size:10px;
+    color: #717171;
 }

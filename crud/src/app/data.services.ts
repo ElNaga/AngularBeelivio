@@ -48,6 +48,7 @@ export class MarathonsService {
             races: [
               { distance: RacesEnum.Trka5km, date: new Date("2023-05-15") },
               { distance: RacesEnum.Trka10km, date: new Date("2023-05-16") },
+              { distance: RacesEnum.Trka21km, date: new Date("2023-05-16") },
             ],
             date: new Date("2023-05-14"),
             description: "The New York City Marathon is one of the world's largest and most famous marathons, attracting runners from all over the globe. The course takes you through all five boroughs of New York City, offering a diverse and exciting running experience."
@@ -101,6 +102,17 @@ export class MarathonsService {
             description: "The Tokyo Marathon offers a unique blend of traditional Japanese culture and modern city life. Runners can experience the rich history and futuristic architecture of Tokyo while participating in the race."
           },
           {
+            id: 6,
+            name: "Paris Marathon",
+            location: "Paris, France",
+            distance: RacesEnum.Trka21km,
+            races: [
+              { distance: RacesEnum.Trka21km, date: new Date("2023-11-12") },
+              { distance: RacesEnum.Trka41km, date: new Date("2023-11-13") },
+            ],
+            date: new Date("2023-11-11"),
+            description: "The Paris Marathon is one of the most scenic marathons in the world, offering runners stunning views of iconic landmarks such as the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral."
+          },{
             id: 6,
             name: "Paris Marathon",
             location: "Paris, France",

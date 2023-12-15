@@ -6,6 +6,9 @@
         <div class="modal-card-description text-view" *ngIf="!isEditingDescription" (click)="isEditingDescription = true">
             {{data.marathon.description}}
         </div>
+        <div  *ngIf="isEditingDescription">
+            Editing...
+        </div>
         <textarea  *ngIf="isEditingDescription" class="modal-card-description input-view" [(ngModel)]="data.marathon.description" (blur)="isEditingDescription = false"></textarea>
         <div>
             Available races in this marathon:

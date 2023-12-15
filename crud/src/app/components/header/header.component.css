@@ -1,14 +1,85 @@
 .header-wrapper {
-    padding: 15px;
-    background-color: #c6c6c6;
-    margin: 5px;
+    width: 100%;
+    background-color: rgba(54, 51, 51, 0.5);
+    padding: 10px 5px 0px 5px;
+    position: fixed;
+    z-index: 1000;
     display: flex;
     flex-direction: row;
-    justify-content:space-around;
+    justify-content:space-between;
+    padding: 10px;
 }
 
-img {
+.header-logo {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10%;
+}
+
+.header-logo-img {
     background-color: transparent;
     height: 40px;
     width: 40px;
 }
+.buttons-wrapper {
+    padding-right: 2%;
+    display: flex;
+    gap: 20px;
+}
+
+.menu-container {
+    position: relative;
+    /* Other styling as needed */
+}
+
+.button-menu {
+    /* Styling for the button */
+    cursor: pointer; /* Indicates an interactive element */
+}
+
+.header-hover-menu {
+    visibility: hidden; /* Initially hidden */
+    opacity: 0; /* Start fully transparent */
+    position: absolute;
+    top: 100%; /* Position the menu right below the button */
+    /* left: -280%; */
+    right: 0;
+    transition: visibility 0s, opacity 0.5s linear; /* Transition effect */
+    /* Additional styling for the menu */
+}
+
+.button-menu:hover + .header-hover-menu,
+.header-hover-menu:hover {
+    visibility: visible; /* Make visible when hovered */
+    opacity: 1; /* Fully opaque when hovered */
+    transition-delay: 0s; /* No delay in showing the menu */
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.button-menu + .header-hover-menu {
+    transition-delay: 0.5s;
+    /* transition: visibility 0s, opacity 25s linear */
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+.menu-button {
+    white-space: nowrap; /* Prevents the text from wrapping */
+    overflow: hidden; /* Ensures overflow text is hidden */
+    text-overflow: ellipsis;
+    background-color: white;
+}
+
+.log-in-button {
+    border-radius: 30% 0px 0px 30%; 
+}
+
+.create-account-button {
+    border-radius: 0% 30% 30% 0%; 
+}
+
+.active {
+    background-color: rgb(113, 127, 168); /* Your highlight color */
+    /* Other styles for the active state */
+  }
