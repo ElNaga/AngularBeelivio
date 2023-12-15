@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { RacesEnum } from './enums/race-distance.enum';
+import { RacesEnum } from './enums/marthon-enums.enum';
 import { MarathonsDb } from './models/marathon.interface';
 
 @Injectable({

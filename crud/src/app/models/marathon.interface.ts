@@ -1,4 +1,4 @@
-import { RacesEnum } from '../enums/race-distance.enum';
+import { RacesEnum } from '../enums/marthon-enums.enum';
 
 export interface Marathon {
   id: number;
