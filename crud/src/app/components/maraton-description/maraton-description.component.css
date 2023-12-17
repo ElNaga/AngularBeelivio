@@ -16,28 +16,23 @@
 }
 
 .modal-card-description.text-view {
-    /* Styles for the text view */
-    padding: 10px; /* Example padding */
-    border: 1px solid transparent; /* Invisible border to match height */
-    /* Other styles to match your design (font, color, etc.) */
+    padding: 10px; 
+    border: 1px solid transparent; 
 }
 
 .modal-card-description.input-view {
-    /* Styles for the input view */
-    padding: 10px; /* Same padding as text view */
-    width: 100%; /* Full width */
+    padding: 10px; 
+    width: 100%;
     height: max-content;
-    box-sizing: border-box; /* Include padding and border in width */
+    box-sizing: border-box; 
     border: 1px solid #af6b6b;
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
-    /* background-color: rgb(214, 215, 235); */
     background-color: #af6b6ba9;
     border-radius: 5px;
     overflow: hidden;
     opacity: 70%;
-    /* Other matching styles (font, color, etc.) */
 }
 
 .modal-card-info-wrapper {
@@ -83,7 +78,7 @@
 }
 
 .modal-card-info {
-    flex: 1; /* This ensures that the boxes take equal width */
-    margin: 10px; /* Optional: for spacing between boxes in wrap */
+    flex: 1;
+    margin: 10px; 
 }
 

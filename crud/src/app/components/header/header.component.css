@@ -6,7 +6,7 @@
     z-index: 1000;
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
     padding: 10px;
 }
 
@@ -21,6 +21,7 @@
     height: 40px;
     width: 40px;
 }
+
 .buttons-wrapper {
     padding-right: 2%;
     display: flex;
@@ -29,57 +30,53 @@
 
 .menu-container {
     position: relative;
-    /* Other styling as needed */
 }
 
 .button-menu {
-    /* Styling for the button */
-    cursor: pointer; /* Indicates an interactive element */
+    cursor: pointer;
 }
 
 .header-hover-menu {
-    visibility: hidden; /* Initially hidden */
-    opacity: 0; /* Start fully transparent */
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
-    top: 100%; /* Position the menu right below the button */
-    /* left: -280%; */
+    top: 100%;
     right: 0;
-    transition: visibility 0s, opacity 0.5s linear; /* Transition effect */
-    /* Additional styling for the menu */
+    transition: visibility 0s, opacity 0.5s linear;
 }
 
-.button-menu:hover + .header-hover-menu,
+.button-menu:hover+.header-hover-menu,
 .header-hover-menu:hover {
-    visibility: visible; /* Make visible when hovered */
-    opacity: 1; /* Fully opaque when hovered */
-    transition-delay: 0s; /* No delay in showing the menu */
+    visibility: visible;
+
+    opacity: 1;
+    transition-delay: 0s;
     justify-content: flex-end;
     flex-direction: column;
 }
 
-.button-menu + .header-hover-menu {
+.button-menu+.header-hover-menu {
     transition-delay: 0.5s;
-    /* transition: visibility 0s, opacity 25s linear */
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
 }
+
 .menu-button {
-    white-space: nowrap; /* Prevents the text from wrapping */
-    overflow: hidden; /* Ensures overflow text is hidden */
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
     background-color: white;
 }
 
 .log-in-button {
-    border-radius: 30% 0px 0px 30%; 
+    border-radius: 30% 0px 0px 30%;
 }
 
 .create-account-button {
-    border-radius: 0% 30% 30% 0%; 
+    border-radius: 0% 30% 30% 0%;
 }
 
 .active {
-    background-color: rgb(113, 127, 168); /* Your highlight color */
-    /* Other styles for the active state */
-  }
+    background-color: rgb(113, 127, 168);
+}

@@ -17,7 +17,6 @@
     </div>
 <div class="past-card-rows-wrapper">
     <div class="past-card-rows" *ngFor="let marathon of pastMarathons | filter:searchString:shouldSort">
-        <!-- Name: {{ marathon.name }}, Location: {{ marathon.location }}, Date: {{marathon.date.toISOString().substring(0,10)}} -->
         <app-marathon-row-card (click)="openModal(marathon)" class="past-card-marathons" [marathonData]="marathon"></app-marathon-row-card>
     </div>
 </div>

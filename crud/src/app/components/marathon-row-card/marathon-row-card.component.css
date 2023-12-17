@@ -2,7 +2,6 @@
     padding: 1em;
     background-color: #64748f;
     text-align: center;
-    /* min-width: 100%; */
 }
 
 .maraton-row__name {
@@ -64,7 +63,6 @@
     color: white;
   }
   
-  /* You can add specific styles for each distance if needed */
   .circle-5 { 
     background-color: #f6546a;
   }
