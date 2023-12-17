@@ -1,5 +1,5 @@
 .past-card-wrapper {
-    background-color: #c6c6c6;
+    background-color: rgb(198, 198, 198, 0.5);
     height: 100%;
     width: 100%;
 
@@ -25,7 +25,7 @@
     gap: 10px;
 }
 
-.past-card_mat_form_field{
+.past-card_mat_form_field {
     width: 70%;
 }
 

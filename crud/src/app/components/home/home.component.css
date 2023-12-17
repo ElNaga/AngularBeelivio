@@ -2,6 +2,15 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    /* object-fit: cover; */
+}
+
+.home-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow-y: hidden;
 }
 
 .app-main-body {
