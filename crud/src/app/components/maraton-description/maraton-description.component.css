@@ -1,30 +1,30 @@
-.modal-card-wrapper{
+.modal-card-wrapper {
     padding: 15px;
     background-color: rgb(230, 229, 227);
 }
 
-.modal-title{
+.modal-title {
     font-weight: bolder;
     margin-bottom: 20px;
 }
 
-.modal-card-description{
- font-weight: 300;
- margin-bottom: 20px;
- transition: all 0.3s ease;
- height: fit-content;
+.modal-card-description {
+    font-weight: 300;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    height: fit-content;
 }
 
 .modal-card-description.text-view {
-    padding: 10px; 
-    border: 1px solid transparent; 
+    padding: 10px;
+    border: 1px solid transparent;
 }
 
 .modal-card-description.input-view {
-    padding: 10px; 
+    padding: 10px;
     width: 100%;
     height: max-content;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     border: 1px solid #af6b6b;
     font-family: inherit;
     font-size: inherit;
@@ -41,19 +41,19 @@
     justify-content: space-around;
 }
 
-.modal-card-info{
+.modal-card-info {
     display: flex;
     flex-direction: column;
-}   
+}
 
-.modal-card-race-km{
+.modal-card-race-km {
     display: flex;
     justify-content: start;
     align-items: center;
     gap: 10px;
 }
 
-.modal-card-date{
+.modal-card-date {
     display: flex;
     justify-content: start;
     align-items: center;
@@ -79,6 +79,5 @@
 
 .modal-card-info {
     flex: 1;
-    margin: 10px; 
+    margin: 10px;
 }
-

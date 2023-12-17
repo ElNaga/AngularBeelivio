@@ -10,18 +10,14 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  currentRoute: string = 'asd';
 
   constructor(
     private navigationService: NavigationService,
     private router: Router
-  ) {
-    // Correctly filter the events to only get instances of NavigationEnd
-    this.router.events.pipe(
-      filter((event): event is NavigationEnd => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      this.currentRoute = event.urlAfterRedirects; // Now TypeScript knows that `event` is a `NavigationEnd` event.
-    });
+  ) { }
+
+  get currentRoute() {
+    return this.router.url
   }
 
   goToPage(page: string): void {
@@ -33,8 +29,7 @@ export class HeaderComponent implements OnInit {
     console.log('Menu trigger called functions')
   }
   isActive(route: string): boolean {
-    // You may need to adjust this based on your routing configuration.
-    console.log('route is: '+route+'  isACtive? '+(this.currentRoute === route))
+    console.log('route is: ' + route + '  isACtive? ' + (this.currentRoute === route))
     return this.currentRoute === route;
   }
 

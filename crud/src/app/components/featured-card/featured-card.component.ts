@@ -31,8 +31,8 @@ export class FeaturedCardComponent implements OnInit {
 
   openModal(marathonData: Marathon): void {
     this.dialog.open(MaratonDescriptionComponent, {
-      width: '40%',
-      data: {marathon: marathonData}
+      data: {marathon: marathonData},
+      panelClass: 'future-card-modal'
     });
   }
 }
