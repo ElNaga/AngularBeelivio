@@ -6,11 +6,13 @@ import { MarathonsComponent } from './components/marathons/marathons.component';
 
 const routes: Routes = [
   { path: 'home', component: MainBodyComponent },
-  { path: 'mymarathons', component: MyMarathonsComponent },
-  { path: 'marathons', component: MarathonsComponent },
+  {
+    path: 'mymarathons',
+    loadChildren: () => import('./modules/my-marathons/my-marathons.module').then(m => m.MarathonsModule)
+  },
   {
     path: 'marathons',
-    loadChildren: () => import('./modules/marathons.module').then(m => m.MarathonsModule)
+    loadChildren: () => import('./modules/marathons/marathons.module').then(m => m.MarathonsModule)
 
   },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
