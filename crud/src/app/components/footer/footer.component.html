@@ -1,7 +1,23 @@
 <mat-card class="footer-wrapper">
-    <div class="header-logo" (click)="goToPage('home')">
-        <img src="../../assets/images/marathonLogo.svg" alt="footer-logo">
+    <div class="footer-left-info-side">
+        <div class="header-logo" (click)="goToPage('home')">
+            <img src="../../assets/images/marathonLogo.svg" alt="footer-logo">
+        </div>
+        <div class="footer-buttons">
+            <button mat-button (click)="goToPage('marathons')">Marathon List</button>
+            <button mat-button (click)="goToPage('mymarathons')">My Marathons</button>
+            <button mat-button (click)="goToPage('home')">Home</button>
+        </div>
     </div>
-    <button mat-button (click)="goToPage('marathons')">Marathon List</button>
-    <button mat-button (click)="goToPage('mymarathons')">My Marathons</button>
+    <div class="the-line-footer">
+
+    </div>
+    <div class="right-info-side">
+        <div class="contact-footer-title">
+            Contact info
+        </div>
+        <div class="text-footer">
+            {{footerString}}
+        </div>
+    </div>
 </mat-card>

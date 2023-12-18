@@ -1,5 +1,5 @@
 .past-card-wrapper {
-    background-color: #c6c6c6;
+    background-color: rgb(198, 198, 198, 0.5);
     height: 100%;
     width: 100%;
 
@@ -15,8 +15,6 @@
 .past-card-search-wrapper {
     display: flex;
     flex-direction: row;
-    /* justify-content:flex-start; */
-    /* align-items: center; */
 }
 
 .past-card-form {
@@ -27,7 +25,7 @@
     gap: 10px;
 }
 
-.past-card_mat_form_field{
+.past-card_mat_form_field {
     width: 70%;
 }
 
@@ -54,10 +52,13 @@ mat-label {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    overflow-y: scroll;
 }
 
 .past-card-rows {
-    width: 33.333%;
+    min-width: 30%;
+    max-width: 33.333%;
+    min-height: 47%;
     display: flex;
     flex: 0 0 auto;
     align-items: center;

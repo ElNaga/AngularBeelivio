@@ -1,13 +1,21 @@
-<mat-card class="header-wrapper">
+<div class="header-wrapper">
     <div class="header-logo" (click)="goToPage('home')">
-        <img src="../../assets/images/marathonLogo.svg" alt="header-logo">
+        <img class="header-logo-img" src="../../assets/images/marathonLogo.svg" alt="header-logo">
     </div>
-    <button 
-        mat-stroked-button
-        (click)="goToPage('marathons')"
-        >Marathon List</button>
-    <button 
-        mat-stroked-button
-        (click)="goToPage('mymarathons')"
-        >My Marathons</button>
-</mat-card>
+    <div class="buttons-wrapper">
+        <button mat-stroked-button [class.active]="isActive('/marathons')" (click)="goToPage('marathons')">Marathon List</button>
+        <button mat-stroked-button [class.active]="isActive('/mymarathons')" (click)="goToPage('mymarathons')">My Marathons</button>
+        <div class="menu-container">
+            <button mat-stroked-button class="button-menu">Menu</button>
+            <div  class="header-hover-menu">
+                <button mat-stroked-button [class.active]="isActive('/marathons')" class="menu-button"  (click)="goToPage('marathons')">Marathons</button>
+                <button mat-stroked-button [class.active]="isActive('/mymarathons')" class="menu-button" (click)="goToPage('mymarathons')">My Marathons</button>
+                <button mat-stroked-button class="menu-button" (click)="goToPage('home')">Home</button>
+            </div>
+        </div>
+        <div>
+            <button mat-stroked-button  class="log-in-button">Log In</button>
+            <button mat-stroked-button class="create-account-button">Create Account</button>
+        </div>
+    </div>
+</div>

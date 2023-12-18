@@ -15,7 +15,5 @@ export class AppComponent implements OnInit {
   constructor(private userService: UserService, private marathonsService: MarathonsService) { };
   
   async ngOnInit() {
-    // console.log( this.marathonsService.createDb())
-    // console.log( this.userService.createDb())
   }
 }
