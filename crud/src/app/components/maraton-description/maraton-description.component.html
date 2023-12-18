@@ -3,17 +3,19 @@
         <div class="modal-title">
             {{data.marathon.name}}
         </div>
-        <div class="modal-card-description text-view" *ngIf="!isEditingDescription" (click)="isEditingDescription = true">
+        <div class="modal-card-description text-view" *ngIf="!isEditingDescription"
+            (click)="isEditingDescription = true">
             {{data.marathon.description}}
         </div>
-        <div  *ngIf="isEditingDescription">
+        <div *ngIf="isEditingDescription">
             Editing...
         </div>
-        <textarea  *ngIf="isEditingDescription" class="modal-card-description input-view" [(ngModel)]="data.marathon.description" (blur)="isEditingDescription = false"></textarea>
+        <textarea *ngIf="isEditingDescription" class="modal-card-description input-view"
+            [(ngModel)]="data.marathon.description" (blur)="isEditingDescription = false"></textarea>
         <div>
             Available races in this marathon:
         </div>
-        <div class="modal-card-info-wrapper" [class]="getRaceClass(data.marathon.races.length)" >
+        <div class="modal-card-info-wrapper" [ngClass]="'races-' + data.marathon.races.length">
             <div class="modal-card-info" *ngFor="let race of data.marathon.races">
                 <div class="modal-card-race-km">
                     <span><mat-icon>directions_run</mat-icon></span> {{race.distance}}km

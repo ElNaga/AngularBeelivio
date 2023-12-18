@@ -60,19 +60,19 @@
     gap: 10px;
 }
 
-.one-race {
+.races-1 {
     justify-content: center;
 }
 
-.two-races {
+.races-2 {
     justify-content: space-between;
 }
 
-.three-races {
+.races-3 {
     justify-content: space-around;
 }
 
-.four-or-more-races {
+.races-4 {
     justify-content: space-between;
     flex-wrap: wrap;
 }

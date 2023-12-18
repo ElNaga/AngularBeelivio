@@ -59,7 +59,7 @@ export class MarathonsService {
             location: "London, UK",
             distance: RacesEnum.Trka10km,
             races: [
-              { distance: RacesEnum.Trka10km, date: new Date("2023-06-20") },
+              // { distance: RacesEnum.Trka10km, date: new Date("2023-06-20") },
               { distance: RacesEnum.Trka21km, date: new Date("2023-06-21") },
             ],
             date: new Date("2023-06-19"),
