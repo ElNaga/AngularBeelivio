@@ -13,7 +13,6 @@ export class MarathonsComponent {
 
   constructor(private userService: UserService, private marathonsService: MarathonsService, private sharedService: SharedService) { };
 
-  // MarathonsDB = this.sharedService.marathons
   ngOnInit() {
     this.MarathonsDB = this.sharedService.marathons;
   }
