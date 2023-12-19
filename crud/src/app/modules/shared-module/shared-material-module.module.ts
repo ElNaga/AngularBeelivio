@@ -26,6 +26,7 @@ import { MatDialogModule } from "@angular/material/dialog";
         FormsModule,
         MatSlideToggleModule,
         MatDialogModule,
+        MatIconModule,
     ],
     exports: [
         MatCardModule,
@@ -40,6 +41,7 @@ import { MatDialogModule } from "@angular/material/dialog";
         FormsModule,
         MatSlideToggleModule,
         MatDialogModule,
+        MatIconModule,
     ]
 })
 export class SharedMaterialModule { }

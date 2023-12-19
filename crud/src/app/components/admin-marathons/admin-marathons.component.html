@@ -16,11 +16,22 @@
         </div>
     </div>
 
-
-
-    <mat-card *ngFor="let marathon of marathons.marathons">
-        <mat-card class="admin-pannel-tabble">
-            {{marathon}}
-        </mat-card>
+    <mat-card class="admin-pannel-table-wrapper" *ngFor="let marathon of marathons.marathons">
+        <div class="admin-pannel-table">
+            <div class="admin-pannel-table-left">
+                <div class="admin-pannel-table-name admin-panel-table-item">
+                    {{marathon.name}}
+                </div>
+                <div class="admin-pannel-table-location admin-panel-table-item">
+                    {{marathon.location}}
+                </div>
+                <div class="admin-pannel-table-date admin-panel-table-item">
+                    {{marathon.date.toISOString().substring(0,10)}}
+                </div>
+            </div>
+            <div class="admin-pannel-table-delete">
+                <span><mat-icon (click)="deleteMarathon(marathon)">delete_forever</mat-icon></span>
+            </div>
+        </div>
     </mat-card>
 </div>

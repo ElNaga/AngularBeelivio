@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MarathonsService, UserService } from 'src/app/data.services';
 import { MarathonsDb } from 'src/app/models/marathon.interface';
+import { SharedService } from 'src/app/modules/shared-module/shared.service';
 
 @Component({
   selector: 'app-marathons',
@@ -10,8 +11,10 @@ import { MarathonsDb } from 'src/app/models/marathon.interface';
 export class MarathonsComponent {
   public MarathonsDB: MarathonsDb = {} as MarathonsDb;
 
-  constructor(private userService: UserService, private marathonsService: MarathonsService) { };
+  constructor(private userService: UserService, private marathonsService: MarathonsService, private sharedService: SharedService) { };
+
+  // MarathonsDB = this.sharedService.marathons
   ngOnInit() {
-    this.MarathonsDB = this.marathonsService.createDb();
+    this.MarathonsDB = this.sharedService.marathons;
   }
 }

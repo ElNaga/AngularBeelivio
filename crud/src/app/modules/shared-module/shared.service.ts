@@ -26,7 +26,7 @@ export class SharedService {
         this.initialiseMarathons();
     }
 
-    private initialiseMarathons(): void {
+    public initialiseMarathons(): void {
         const currentDate = new Date();
         this.futureMarathons = this.marathons.marathons.filter(marathon => marathon.date > currentDate);
         this.pastMarathons = this.marathons.marathons.filter(marathon => marathon.date < currentDate);

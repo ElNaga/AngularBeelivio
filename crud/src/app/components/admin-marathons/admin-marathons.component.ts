@@ -2,6 +2,7 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ThemePalette } from '@angular/material/core';
 import { SharedService } from 'src/app/modules/shared-module/shared.service';
+import { Marathon } from 'src/app/models/marathon.interface';
 
 @Component({
   selector: 'app-admin-marathons',
@@ -30,4 +31,13 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.titleService.setTitle('Marathons Page');
   }
+
+  public deleteMarathon(inputMarathon: Marathon): void {
+    const index = this.sharedService.marathons.marathons.findIndex(marathon => marathon === inputMarathon);
+    if (index > -1) {
+      this.sharedService.marathons.marathons.splice(index, 1);
+    }
+    this.sharedService.initialiseMarathons();
+  }
+
 }
