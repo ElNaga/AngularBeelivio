@@ -1,0 +1,26 @@
+<div class="admin-pannel-wrapper">
+    <h1>Admin Panel</h1>
+
+    <div class="admin-pannel-filters-box">
+        <form class="past-card-form">
+            <mat-form-field class="past-card_mat_form_field">
+                <mat-label>Search Marathons</mat-label>
+                <input [(ngModel)]="searchString" matInput placeholder="Search..." name="past-search">
+            </mat-form-field>
+        </form>
+        <div class="searchable-toggle">
+            <mat-label>Sort by total disctance</mat-label>
+            <mat-slide-toggle [(ngModel)]="shouldSort" class="example-margin" [color]="toggleOptions.color"
+                [checked]="toggleOptions.checked" [disabled]="toggleOptions.disabled">
+            </mat-slide-toggle>
+        </div>
+    </div>
+
+
+
+    <mat-card *ngFor="let marathon of marathons.marathons">
+        <mat-card class="admin-pannel-tabble">
+            {{marathon}}
+        </mat-card>
+    </mat-card>
+</div>
