@@ -1,0 +1,9 @@
+.marathons-page-wrapper {
+    margin-top: 5%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.marathons-card {}

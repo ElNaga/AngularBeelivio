@@ -10,24 +10,10 @@ import { Marathon } from 'src/app/models/marathon.interface';
 export class MaratonDescriptionComponent {
   constructor(
     public dialogRef: MatDialogRef<MaratonDescriptionComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {marathon: Marathon}) {
-      console.log(data)
-    }
-
-    isEditingDescription = false;
-
-    
-
-    getRaceClass(numberOfRaces: number): string {
-      if (numberOfRaces === 1) {
-          return 'one-race';
-      } else if (numberOfRaces === 2) {
-          return 'two-races';
-      } else if (numberOfRaces === 3) {
-          return 'three-races';
-      } else {
-          return 'four-or-more-races';
-      }
+    @Inject(MAT_DIALOG_DATA) public data: { marathon: Marathon }) {
+    console.log(data)
   }
-  
+
+  isEditingDescription = false;
+
 }

@@ -5,10 +5,17 @@ import { MyMarathonsComponent } from './components/my-marathons/my-marathons.com
 import { MarathonsComponent } from './components/marathons/marathons.component';
 
 const routes: Routes = [
-    { path: 'home', component: MainBodyComponent },
-    { path: 'mymarathons', component: MyMarathonsComponent },
-    { path: 'marathons', component: MarathonsComponent },
-    { path: '**', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: MainBodyComponent },
+  {
+    path: 'mymarathons',
+    loadChildren: () => import('./modules/my-marathons/my-marathons.module').then(m => m.MyMarathonsModule)
+  },
+  {
+    path: 'marathons',
+    loadChildren: () => import('./modules/marathons/marathons.module').then(m => m.MarathonsModule)
+
+  },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

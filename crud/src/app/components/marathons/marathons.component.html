@@ -1,5 +1,10 @@
-<mat-card *ngFor="let marathon of MarathonsDB.marathons">
-    <mat-card>
-        {{marathon}}
+<div class="marathons-page-wrapper">
+    <mat-card class="marathons-card" *ngFor="let marathon of MarathonsDB.marathons">
+        <mat-card>
+            <div>
+                Marathon Name: {{marathon.name}}
+            </div>
+            Marathon Location: {{marathon.location}}
+        </mat-card>
     </mat-card>
-</mat-card>
+</div>
