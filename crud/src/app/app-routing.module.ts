@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'home', component: MainBodyComponent },
   {
     path: 'mymarathons',
-    loadChildren: () => import('./modules/my-marathons/my-marathons.module').then(m => m.MarathonsModule)
+    loadChildren: () => import('./modules/my-marathons/my-marathons.module').then(m => m.MyMarathonsModule)
   },
   {
     path: 'marathons',

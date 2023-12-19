@@ -12,4 +12,4 @@ import { MyMarathonsComponent } from 'src/app/components/my-marathons/my-maratho
         MyMarathonsRoutingModule,
     ]
 })
-export class MarathonsModule { }
+export class MyMarathonsModule { }
