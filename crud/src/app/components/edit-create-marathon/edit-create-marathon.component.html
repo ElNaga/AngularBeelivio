@@ -1,22 +1,52 @@
-<div>
+<form>
     <h3>Create/Edit Marathon</h3>
     <div class="table-modal">
         <div class="table-modal-left">
-            <textarea [(ngModel)]="data.marathon.name" name="marathon-name" id="marathon-name" cols=""
-                rows=""></textarea>
-            <textarea [(ngModel)]="data.marathon.location" name="marathon-location" id="marathon-location" cols=""
-                rows=""></textarea>
-            <textarea [(ngModel)]="data.marathon.date" name="marathon-date" id="marathon-date" cols=""
-                rows=""></textarea>
+            <mat-form-field class="example-full-width">
+                <mat-label>Marathon Name</mat-label>
+                <input matInput [(ngModel)]="data.marathon.name" name="marathon-name" placeholder="" value="Sushi">
+            </mat-form-field>
+            <!-- <input matInput [(ngModel)]="data.marathon.name" name="marathon-name" id="marathon-name" cols="" rows="" /> -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Marathon Location</mat-label>
+                <input matInput [(ngModel)]="data.marathon.location" name="marathon-location" placeholder=""
+                    value="Sushi">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Date</mat-label>
+                <input [(ngModel)]="data.marathon.date" name="date-input" matInput [matDatepicker]="picker">
+                <mat-hint>DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
         </div>
         <div class="table-modal-right">
-            <div class="table-modal-right-description">
-                <textarea [(ngModel)]="data.marathon.description" name="marathon-description" id="marathon-description"
-                    cols="" rows=""></textarea>
-            </div>
+            <mat-form-field class="table-modal-right-description">
+                <textarea matInput [(ngModel)]="data.marathon.description" name="marathon-description"
+                    id="marathon-description" cols="" rows="">
+                </textarea>
+            </mat-form-field>
             <div class="table-modal-right-races">
-
+                <div *ngFor="let race of data.marathon.races; let i = index" class="table-modal-right-races-row">
+                    {{i}}
+                    {{data.marathon.races[0]}}
+                    {{race.distance}}
+                    <mat-form-field>
+                        <mat-label>Kilometers</mat-label>
+                        <input matNativeControl [(ngModel)]="data.marathon.races[i].distance" mdInput name="race-km"
+                            type="number" id="myNumber" />
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Date</mat-label>
+                        <input [(ngModel)]="data.marathon.races[i].date" name="date-input" matInput
+                            [matDatepicker]="picker">
+                        <mat-hint>DD/MM/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <button mat-button>Add Race</button>
             </div>
         </div>
     </div>
-</div>
+</form>

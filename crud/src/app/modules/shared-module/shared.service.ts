@@ -28,6 +28,7 @@ export class SharedService {
 
     public initialiseMarathons(): void {
         const currentDate = new Date();
+        this.marathons.marathons.map(marathon => marathon.date.toLocaleDateString('fr-FR'));
         this.futureMarathons = this.marathons.marathons.filter(marathon => marathon.date > currentDate);
         this.pastMarathons = this.marathons.marathons.filter(marathon => marathon.date < currentDate);
     }
