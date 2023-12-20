@@ -12,7 +12,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { MarathonsService, UserService } from './data.services';
-import { HttpClientModule } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -22,7 +22,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MainBodyComponent } from './components/main-body/main-body.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FeaturedCardComponent } from './components/featured-card/featured-card.component';
-import { MyMarathonsComponent } from './components/my-marathons/my-marathons.component';
 import { MarathonRowCardComponent } from './components/marathon-row-card/marathon-row-card.component';
 import { PastCardComponent } from './components/past-card/past-card.component';
 import { MaratonDescriptionComponent } from './components/maraton-description/maraton-description.component';
@@ -35,8 +34,6 @@ import { MaratonDescriptionComponent } from './components/maraton-description/ma
     FooterComponent,
     MainBodyComponent,
     FeaturedCardComponent,
-    MyMarathonsComponent,
-    // MarathonsComponent,
     MarathonRowCardComponent,
     PastCardComponent,
     FilterPipe,
@@ -44,7 +41,9 @@ import { MaratonDescriptionComponent } from './components/maraton-description/ma
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    // HttpClientModule,
+    // HttpClientInMemoryWebApiModule.forRoot(MarathonsService),
+    // HttpClientInMemoryWebApiModule.forRoot(UserService),
     MatCardModule,
     MatButtonModule,
     MatIconModule,
@@ -54,8 +53,6 @@ import { MaratonDescriptionComponent } from './components/maraton-description/ma
     FormsModule,
     MatSlideToggleModule,
     MatDialogModule,
-    // HttpClientInMemoryWebApiModule.forRoot(MarathonsService),
-    // HttpClientInMemoryWebApiModule.forRoot(UserService),
     BrowserAnimationsModule,
     AppRoutingModule
   ],
