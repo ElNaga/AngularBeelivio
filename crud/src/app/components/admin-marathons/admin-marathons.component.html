@@ -17,7 +17,7 @@
     </div>
 
     <mat-card class="admin-pannel-table-wrapper" *ngFor="let marathon of marathons.marathons">
-        <div class="admin-pannel-table">
+        <div class="admin-pannel-table" (click)="openModal(marathon) ">
             <div class="admin-pannel-table-left">
                 <div class="admin-pannel-table-name admin-panel-table-item">
                     {{marathon.name}}

@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
     console.log('Menu trigger called functions')
   }
   isActive(route: string): boolean {
-    console.log('route is: ' + route + '  isACtive? ' + (this.currentRoute === route))
+    // console.log('route is: ' + route + '  isACtive? ' + (this.currentRoute === route))
     return this.currentRoute === route;
   }
 
