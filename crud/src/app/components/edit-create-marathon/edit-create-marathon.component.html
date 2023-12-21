@@ -33,12 +33,12 @@
                     {{race.distance}}
                     <mat-form-field>
                         <mat-label>Kilometers</mat-label>
-                        <input matNativeControl [(ngModel)]="data.marathon.races[i].distance" mdInput name="race-km"
-                            type="number" id="myNumber" />
+                        <input matNativeControl [(ngModel)]="data.marathon.races[i].distance" mdInput
+                            [name]="'race-km-' + i" [id]="'distance-' + i" type="number" />
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Date</mat-label>
-                        <input [(ngModel)]="data.marathon.races[i].date" name="date-input" matInput
+                        <input [(ngModel)]="data.marathon.races[i].date" [name]="'date-input-' + i" matInput
                             [matDatepicker]="picker">
                         <mat-hint>DD/MM/YYYY</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
