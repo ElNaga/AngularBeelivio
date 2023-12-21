@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../../navigation.service';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -29,7 +28,7 @@ export class HeaderComponent implements OnInit {
     console.log('Menu trigger called functions')
   }
   isActive(route: string): boolean {
-    console.log('route is: ' + route + '  isACtive? ' + (this.currentRoute === route))
+    // console.log('route is: ' + route + '  isACtive? ' + (this.currentRoute === route))
     return this.currentRoute === route;
   }
 

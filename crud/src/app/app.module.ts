@@ -25,6 +25,7 @@ import { FeaturedCardComponent } from './components/featured-card/featured-card.
 import { MarathonRowCardComponent } from './components/marathon-row-card/marathon-row-card.component';
 import { PastCardComponent } from './components/past-card/past-card.component';
 import { MaratonDescriptionComponent } from './components/maraton-description/maraton-description.component';
+// import { EditCreateMarathonComponent } from './components/edit-create-marathon/edit-create-marathon.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MaratonDescriptionComponent } from './components/maraton-description/ma
     PastCardComponent,
     FilterPipe,
     MaratonDescriptionComponent,
+    // EditCreateMarathonComponent,
   ],
   imports: [
     BrowserModule,

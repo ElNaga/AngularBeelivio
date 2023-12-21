@@ -3,6 +3,8 @@ import { Title } from '@angular/platform-browser';
 import { ThemePalette } from '@angular/material/core';
 import { SharedService } from 'src/app/modules/shared-module/shared.service';
 import { Marathon } from 'src/app/models/marathon.interface';
+import { EditCreateMarathonComponent } from '../edit-create-marathon/edit-create-marathon.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-marathons',
@@ -10,7 +12,11 @@ import { Marathon } from 'src/app/models/marathon.interface';
   styleUrls: ['./admin-marathons.component.css'],
 })
 export class AdminMarathonsComponent implements OnInit, OnDestroy {
-  constructor(private titleService: Title, private sharedService: SharedService) { }
+  constructor(
+    private titleService: Title,
+    private sharedService: SharedService,
+    private dialog: MatDialog
+  ) { }
 
   marathons = this.sharedService.marathons
 
@@ -38,6 +44,14 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
       this.sharedService.marathons.marathons.splice(index, 1);
     }
     this.sharedService.initialiseMarathons();
+  }
+
+  openModal(marathonData: Marathon): void {
+    console.log('logging from openModal, data:\n', marathonData)
+    this.dialog.open(EditCreateMarathonComponent, {
+      data: { marathon: marathonData },
+      panelClass: 'admin-modal',
+    });
   }
 
 }

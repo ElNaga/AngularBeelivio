@@ -21,7 +21,7 @@
                     <span><mat-icon>directions_run</mat-icon></span> {{race.distance}}km
                 </div>
                 <div class="modal-card-date">
-                    <span><mat-icon>calendar_today</mat-icon></span> {{race.date.toISOString().substring(0,10)}}
+                    <span><mat-icon>calendar_today</mat-icon></span> {{race.date.toLocaleDateString('fr-FR')}}
                 </div>
             </div>
         </div>

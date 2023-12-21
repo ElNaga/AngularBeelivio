@@ -1,0 +1,61 @@
+.table-modal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.table-modal-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.marathon-date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.marathon-date-date-input-part {
+    display: flex;
+}
+
+.marathon-date-date-input {
+    height: 100%;
+}
+
+.table-modal-right-races {
+    display: flex;
+    flex-direction: column;
+}
+
+.table-modal-right-races-row {
+    display: flex;
+    gap: 20px;
+}
+
+.no-style-textarea {
+    border: none;
+    /* Removes the border */
+    outline: none;
+    /* Removes the focus outline */
+    background: transparent;
+    /* Makes the background transparent */
+    resize: none;
+    /* Disables resizing */
+    font-family: inherit;
+    /* Inherits font-family from the parent */
+    font-size: inherit;
+    /* Inherits font-size from the parent */
+    color: inherit;
+    /* Inherits text color from the parent */
+    padding: 0;
+    /* Removes padding */
+    margin: 0;
+    /* Removes margin */
+    overflow: auto;
+    /* Adds scrollbars if needed */
+    width: auto;
+    /* Width can be adjusted as needed */
+    height: auto;
+}

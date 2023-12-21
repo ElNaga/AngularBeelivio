@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core'
-import { Marathon, MarathonsDb } from 'src/app/models/marathon.interface';
+import { Marathon } from 'src/app/models/marathon.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { MaratonDescriptionComponent } from '../maraton-description/maraton-description.component';
 
@@ -31,7 +31,7 @@ export class FeaturedCardComponent implements OnInit {
 
   openModal(marathonData: Marathon): void {
     this.dialog.open(MaratonDescriptionComponent, {
-      data: {marathon: marathonData},
+      data: { marathon: marathonData },
       panelClass: 'future-card-modal'
     });
   }
