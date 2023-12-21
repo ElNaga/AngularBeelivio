@@ -22,3 +22,8 @@ body {
         width: 100% !important;
     }
 }
+
+.admin-modal {
+    width: "100%";
+    max-width: "900px";
+}

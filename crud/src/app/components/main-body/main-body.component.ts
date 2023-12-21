@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { MarathonsService, UserService } from '../../data.services';
-import { Marathon, MarathonsDb } from 'src/app/models/marathon.interface';
-import { UsersDb } from 'src/app/models/user.intereface';
+import { Component } from '@angular/core';
 import { SharedService } from 'src/app/modules/shared-module/shared.service';
 
 @Component({

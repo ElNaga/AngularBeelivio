@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../../navigation.service';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',

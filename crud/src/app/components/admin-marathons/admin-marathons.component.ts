@@ -50,9 +50,7 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
     console.log('logging from openModal, data:\n', marathonData)
     this.dialog.open(EditCreateMarathonComponent, {
       data: { marathon: marathonData },
-      // panelClass: 'future-card-modal'
-      width: "100%",
-      maxWidth: "900px",
+      panelClass: 'admin-modal',
     });
   }
 
