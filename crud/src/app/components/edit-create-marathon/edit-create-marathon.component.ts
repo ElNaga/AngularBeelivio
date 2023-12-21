@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { RacesEnum } from 'src/app/enums/marthon-enums.enum';
 import { Marathon, Race } from 'src/app/models/marathon.interface';
 
 @Component({
@@ -10,13 +12,30 @@ import { Marathon, Race } from 'src/app/models/marathon.interface';
 export class EditCreateMarathonComponent {
   constructor(
     public dialogRef: MatDialogRef<EditCreateMarathonComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { marathon: Marathon }
+    @Inject(MAT_DIALOG_DATA) public data: { marathon: Marathon },
+    private fb: FormBuilder
   ) {
     console.log('LOGGING FROM CONSTRUCTOR MODAL COMPONENT \n', data)
   }
 
+  marathonForm = this.fb.group({
+    name: '',
+    location: '',
+    date: new Date(),
+    description: '',
+    distance: 0,
+    races: [{
+      distance: RacesEnum.Trka5km,
+      date: new Date()
+    }]
+  })
+
   addRace(): void {
     this.data.marathon.races.push([] as unknown as Race)
+  }
+
+  onSubmit(): void {
+    console.log('subbmited form', this.marathonForm.value)
   }
 
   ngOnInit() {

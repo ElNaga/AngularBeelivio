@@ -8,7 +8,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule } from "@angular/material/menu";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatNativeDateModule } from "@angular/material/core";
 import { FilterPipe } from "src/app/pipes/filter.pipe";
@@ -30,6 +30,7 @@ import { FilterPipe } from "src/app/pipes/filter.pipe";
         MatDialogModule,
         MatDatepickerModule,
         MatNativeDateModule,
+        ReactiveFormsModule
     ],
     exports: [
         MatCardModule,
@@ -43,7 +44,8 @@ import { FilterPipe } from "src/app/pipes/filter.pipe";
         MatDialogModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        FilterPipe
+        FilterPipe,
+        ReactiveFormsModule
     ]
 })
 export class SharedMaterialModule { }
