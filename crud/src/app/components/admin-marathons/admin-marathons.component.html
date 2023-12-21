@@ -2,10 +2,11 @@
     <h1>Admin Panel</h1>
 
     <div class="admin-pannel-filters-box">
-        <form class="past-card-form">
-            <mat-form-field class="past-card_mat_form_field">
+        <form class="admin-card-form">
+            <mat-form-field class="admin-card_mat_form_field">
                 <mat-label>Search Marathons</mat-label>
-                <input [(ngModel)]="searchString" matInput placeholder="Search..." name="past-search">
+                <input [(ngModel)]="searchString" matInput placeholder="Search..."
+                    class="admin-card_mat_form_field-search" name="admin-search">
             </mat-form-field>
         </form>
         <div class="searchable-toggle">
@@ -14,24 +15,29 @@
                 [checked]="toggleOptions.checked" [disabled]="toggleOptions.disabled">
             </mat-slide-toggle>
         </div>
+        <button mat-fab [extended]="true" (click)="AddMarathon(marathons.marathons)"><mat-icon>add</mat-icon> Add
+            Marathon</button>
     </div>
-
-    <mat-card class="admin-pannel-table-wrapper" *ngFor="let marathon of marathons.marathons">
-        <div class="admin-pannel-table" (click)="openModal(marathon) ">
-            <div class="admin-pannel-table-left">
-                <div class="admin-pannel-table-name admin-panel-table-item">
-                    {{marathon.name}}
+    <div class="table-wrapper">
+        <mat-card class="admin-pannel-table-card"
+            *ngFor="let marathon of marathons.marathons | filter:searchString:shouldSort">
+            <!-- <mat-card class="admin-pannel-table-card" *ngFor="let marathon of marathons.marathons"> -->
+            <div class="admin-pannel-table" (click)="openModal(marathon) ">
+                <div class="admin-pannel-table-left">
+                    <div class="admin-pannel-table-name admin-panel-table-item">
+                        {{marathon.name}}
+                    </div>
+                    <div class="admin-pannel-table-location admin-panel-table-item">
+                        {{marathon.location}}
+                    </div>
+                    <div class="admin-pannel-table-date admin-panel-table-item">
+                        {{marathon.date.toLocaleDateString('fr-FR')}}
+                    </div>
                 </div>
-                <div class="admin-pannel-table-location admin-panel-table-item">
-                    {{marathon.location}}
-                </div>
-                <div class="admin-pannel-table-date admin-panel-table-item">
-                    {{marathon.date.toLocaleDateString('fr-FR')}}
+                <div class="admin-pannel-table-delete">
+                    <span><mat-icon (click)="deleteMarathon(marathon)">delete_forever</mat-icon></span>
                 </div>
             </div>
-            <div class="admin-pannel-table-delete">
-                <span><mat-icon (click)="deleteMarathon(marathon)">delete_forever</mat-icon></span>
-            </div>
-        </div>
-    </mat-card>
+        </mat-card>
+    </div>
 </div>

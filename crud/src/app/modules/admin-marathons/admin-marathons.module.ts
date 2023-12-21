@@ -8,12 +8,12 @@ import { EditCreateMarathonComponent } from '../../components/edit-create-marath
 @NgModule({
   declarations: [
     AdminMarathonsComponent,
-    EditCreateMarathonComponent
+    EditCreateMarathonComponent,
   ],
   imports: [
     CommonModule,
     AdminMarathonsRoutingModule,
-    SharedMaterialModule
+    SharedMaterialModule,
   ]
 })
 export class AdminMarathonsModule { }

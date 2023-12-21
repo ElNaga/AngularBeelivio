@@ -25,7 +25,8 @@ import { FeaturedCardComponent } from './components/featured-card/featured-card.
 import { MarathonRowCardComponent } from './components/marathon-row-card/marathon-row-card.component';
 import { PastCardComponent } from './components/past-card/past-card.component';
 import { MaratonDescriptionComponent } from './components/maraton-description/maraton-description.component';
-// import { EditCreateMarathonComponent } from './components/edit-create-marathon/edit-create-marathon.component';
+import { EditCreateMarathonComponent } from './components/edit-create-marathon/edit-create-marathon.component';
+import { SharedMaterialModule } from './modules/shared-module/shared-material-module.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,6 @@ import { MaratonDescriptionComponent } from './components/maraton-description/ma
     FeaturedCardComponent,
     MarathonRowCardComponent,
     PastCardComponent,
-    FilterPipe,
     MaratonDescriptionComponent,
     // EditCreateMarathonComponent,
   ],
@@ -56,7 +56,8 @@ import { MaratonDescriptionComponent } from './components/maraton-description/ma
     MatSlideToggleModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedMaterialModule
   ],
   providers: [
     MarathonsService,

@@ -11,9 +11,12 @@ import { MatMenuModule } from "@angular/material/menu";
 import { FormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatNativeDateModule } from "@angular/material/core";
+import { FilterPipe } from "src/app/pipes/filter.pipe";
 
 @NgModule({
-    declarations: [],
+    declarations: [
+        FilterPipe
+    ],
     imports: [
         CommonModule,
         MatCardModule,
@@ -26,8 +29,7 @@ import { MatNativeDateModule } from "@angular/material/core";
         FormsModule,
         MatDialogModule,
         MatDatepickerModule,
-        MatNativeDateModule
-
+        MatNativeDateModule,
     ],
     exports: [
         MatCardModule,
@@ -40,7 +42,8 @@ import { MatNativeDateModule } from "@angular/material/core";
         FormsModule,
         MatDialogModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        FilterPipe
     ]
 })
 export class SharedMaterialModule { }

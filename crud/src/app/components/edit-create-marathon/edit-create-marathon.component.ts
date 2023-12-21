@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Marathon } from 'src/app/models/marathon.interface';
+import { Marathon, Race } from 'src/app/models/marathon.interface';
 
 @Component({
   selector: 'app-edit-create-marathon',
@@ -15,7 +15,12 @@ export class EditCreateMarathonComponent {
     console.log('LOGGING FROM CONSTRUCTOR MODAL COMPONENT \n', data)
   }
 
+  addRace(): void {
+    this.data.marathon.races.push([] as unknown as Race)
+  }
+
   ngOnInit() {
+
     // Check if the entering object is empty, then set a flag!
   }
 
