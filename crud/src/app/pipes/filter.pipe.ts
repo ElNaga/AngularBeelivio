@@ -9,15 +9,14 @@ export class FilterPipe implements PipeTransform {
   transform(marathons: Marathon[], searchString: string, shouldSort: boolean): Marathon[] {
     if (!marathons) return [];
     let sortedMarathons = marathons;
-    
+
     if (shouldSort) {
       sortedMarathons = sortedMarathons.slice().sort((a: Marathon, b: Marathon) => {
         return a.distance - b.distance
       })
     }
-    
-    if (!searchString) return sortedMarathons;
 
+    if (!searchString) return sortedMarathons;
 
     searchString = searchString.toLowerCase();
 

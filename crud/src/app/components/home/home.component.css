@@ -8,8 +8,8 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    overflow-y: hidden;
+    /* object-fit: fill; */
+    /* overflow-y: auto; */
     z-index: -1000;
 }
 
