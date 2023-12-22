@@ -1,20 +1,21 @@
-<!-- <form [formGroup]="marathonForm" (ngSubmit)="onSubmit()"> -->
-<form (ngSubmit)="onSubmit()">
+<form [formGroup]="marathonForm" (ngSubmit)="onSubmit()">
+    <!-- <form (ngSubmit)="onSubmit()"> -->
     <h3 class="modal-title">Create/Edit Marathon</h3>
     <div class="table-modal">
         <div class="table-modal-left">
             <mat-form-field class="input-full-width">
                 <mat-label>Marathon Name</mat-label>
-                <input matInput [(ngModel)]="data.marathon.name" name="marathon-name" placeholder="" value="Sushi">
+                <input formControlName="name" matInput [(ngModel)]="data.marathon.name" name="marathon-name">
             </mat-form-field>
-            <mat-form-field class="input-full-width">
+            <mat-form-field class=" input-full-width">
                 <mat-label>Marathon Location</mat-label>
-                <input matInput [(ngModel)]="data.marathon.location" name="marathon-location" placeholder=""
-                    value="Sushi">
+                <input matInput name="marathon-location" formControlName="location" [(ngModel)]="data.marathon.location"
+                    placeholder="" value="">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Date</mat-label>
-                <input [(ngModel)]="data.marathon.date" name="date-input" matInput [matDatepicker]="picker">
+                <input name="marathon-date" matInput formControlName="date" [(ngModel)]="data.marathon.date"
+                    [matDatepicker]="picker">
                 <mat-hint>DD/MM/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -22,29 +23,32 @@
         </div>
         <div class="table-modal-right">
             <mat-form-field class="table-modal-right-description">
-                <textarea matInput [(ngModel)]="data.marathon.description"
-                    class="table-modal-right-description-textarea" name="marathon-description" id="marathon-description"
-                    cols="" rows="">
+                <textarea matInput class="table-modal-right-description-textarea" formControlName="description"
+                    [(ngModel)]="data.marathon.description" formControlName="description" name="marathon-description"
+                    id="marathon-description" cols="" rows="">
                 </textarea>
             </mat-form-field>
-            <div class="table-modal-right-races">
+            <!-- <div formArrayName="races" class="table-modal-right-races">
                 <div *ngFor="let race of data.marathon.races; let i = index" class="table-modal-right-races-row">
+
                     <mat-form-field>
                         <mat-label>Kilometers</mat-label>
-                        <input matNativeControl [(ngModel)]="data.marathon.races[i].distance" mdInput
-                            [name]="'race-km-' + i" [id]="'distance-' + i" type="number" />
+                        <input matNativeControl matInput [name]="'marathon-race-distance' + i"
+                            [id]="'race-distance-' + i" type="number" />
                     </mat-form-field>
-                    <mat-form-field>0
+
+                    <mat-form-field>
                         <mat-label>Date</mat-label>
-                        <input [(ngModel)]="data.marathon.races[i].date" [name]="'date-input-' + i" matInput
-                            [matDatepicker]="picker">
+                        <input [name]="'marathon-race-date-' + i" matInput [matDatepicker]="picker">
                         <mat-hint>DD/MM/YYYY</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
+
                 </div>
                 <button mat-raised-button (click)="addRace()">Add Race</button>
-            </div>
+            </div> -->
+            <app-races-admin-panel-modal [races]="data.marathon.races"></app-races-admin-panel-modal>
         </div>
     </div>
 </form>
