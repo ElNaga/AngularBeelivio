@@ -42,24 +42,7 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
 
   public AddMarathon(inputMarathons: Marathon[]): void {
     console.log('printing from inside AddMarathon +++ BEFORE PUSH:\n', inputMarathons)
-    const newMarathon = {
-      id: inputMarathons.length + 1,
-      name: '',
-      location: '',
-      distance: RacesEnum.Trka5km,
-      races: [{
-        distance: 0,
-        date: new Date()
-      }],
-      description: '',
-      date: new Date()
-    }
 
-    let index = inputMarathons.push(newMarathon);
-    console.log(index, 'ths is from index console lof')
-
-    console.log('printing from inside AddMarathon:\n', inputMarathons)
-    this.openModal(this.sharedService.marathons.marathons[index - 1]);
   }
 
   public deleteMarathon(inputMarathon: Marathon): void {
@@ -70,6 +53,8 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
     this.sharedService.initialiseMarathons();
   }
 
+  /* Takes [one Marathon] as input, opens modal with that marathon
+  */
   openModal(marathonData: Marathon): void {
     console.log('logging from openModal, data:\n', marathonData)
     this.dialogMarathonData = marathonData;
@@ -78,6 +63,8 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
       panelClass: 'admin-modal',
     });
 
+    /* Checks [Races] After MODAL is closed, erases empty races.
+    */
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       this.CheckMarathonRacesIfAnyAreEmpty();

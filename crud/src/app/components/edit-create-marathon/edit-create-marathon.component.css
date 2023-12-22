@@ -22,6 +22,10 @@
     flex-direction: column;
 }
 
+.input-full-width {
+    width: auto;
+}
+
 .marathon-date {
     display: flex;
     flex-direction: column;

@@ -15,27 +15,17 @@ export class EditCreateMarathonComponent {
     @Inject(MAT_DIALOG_DATA) public data: { marathon: Marathon },
     private fb: FormBuilder
   ) {
-    console.log('LOGGING FROM CONSTRUCTOR MODAL COMPONENT \n', data)
+    console.log('LOGGING FROM CONSTRUCTOR EditCreateMarathonComponent MODAL COMPONENT \n', data)
   }
 
-  marathonForm = this.fb.group({
-    name: '',
-    location: '',
-    date: new Date(),
-    description: '',
-    distance: 0,
-    races: [{
-      distance: RacesEnum.Trka5km,
-      date: new Date()
-    }]
-  })
+
 
   addRace(): void {
     this.data.marathon.races.push([] as unknown as Race)
   }
 
   onSubmit(): void {
-    console.log('subbmited form', this.marathonForm.value)
+    // console.log('subbmited form', this.marathonForm.value)
   }
 
   ngOnInit() {
