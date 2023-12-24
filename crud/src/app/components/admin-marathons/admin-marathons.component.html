@@ -21,7 +21,6 @@
     <div class="table-wrapper">
         <mat-card class="admin-pannel-table-card"
             *ngFor="let marathon of marathons.marathons | filter:searchString:shouldSort">
-            <!-- <mat-card class="admin-pannel-table-card" *ngFor="let marathon of marathons.marathons"> -->
             <div class="admin-pannel-table" (click)="openModal(marathon) ">
                 <div class="admin-pannel-table-left">
                     <div class="admin-pannel-table-name admin-panel-table-item">

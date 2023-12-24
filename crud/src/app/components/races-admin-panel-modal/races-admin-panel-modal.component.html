@@ -4,7 +4,6 @@
 
             <mat-form-field>
                 <mat-label>Kilometers</mat-label>
-                <!-- <input matNativeControl matInput formControlName="raceDistance" -->
                 <input formControlName="distance" [(ngModel)]="race.distance" matNativeControl matInput
                     [name]="'marathon-race-distance' + i" [id]="'race-distance-' + i" type="number" />
             </mat-form-field>
@@ -20,6 +19,5 @@
 
         </div>
         <button mat-raised-button (click)="addRace()">Add Race</button>
-        <!-- <button (click)="onAddRaceClick()" mat-raised-button>Add Race</button> -->
     </div>
 </div>

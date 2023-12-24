@@ -54,10 +54,6 @@ export class EditCreateMarathonComponent {
     // races: this.fb.array([])
   });
 
-  // get races() {
-  //   return this.marathonForm.get('races') as FormArray;
-  // }
-
   isEmptyObjectOnEntry() {
     this.isEditMode = (!!this.data.marathon.name);
   }
@@ -67,10 +63,6 @@ export class EditCreateMarathonComponent {
   addRace(): void {
     this.data.marathon.races.push([] as unknown as Race)
     this.addRaceControl();
-  }
-
-  onSubmit(): void {
-    // console.log('subbmited form', this.marathonForm.value)
   }
 
   ngOnInit() {

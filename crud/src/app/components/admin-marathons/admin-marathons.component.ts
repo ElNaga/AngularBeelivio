@@ -1,11 +1,10 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ThemePalette } from '@angular/material/core';
 import { SharedService } from 'src/app/modules/shared-module/shared.service';
 import { Marathon, Race } from 'src/app/models/marathon.interface';
 import { EditCreateMarathonComponent } from '../edit-create-marathon/edit-create-marathon.component';
 import { MatDialog } from '@angular/material/dialog';
-import { RacesEnum } from 'src/app/enums/marthon-enums.enum';
 
 @Component({
   selector: 'app-admin-marathons',
@@ -63,8 +62,6 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
     this.sharedService.initialiseMarathons();
   }
 
-  /* Takes [one Marathon] as input, opens modal with that marathon
-  */
   openModal(marathonData: Marathon): void {
     console.log('logging from openModal, data:\n', marathonData)
     this.dialogMarathonData = marathonData;
@@ -73,8 +70,6 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
       panelClass: 'admin-modal',
     });
 
-    /* Checks [Races] After MODAL is closed, erases empty races.
-    */
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       this.CheckMarathonRacesIfAnyAreEmpty();

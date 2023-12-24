@@ -1,5 +1,4 @@
-<form [formGroup]="marathonForm" (ngSubmit)="onSubmit()">
-    <!-- <form (ngSubmit)="onSubmit()"> -->
+<form [formGroup]="marathonForm">
     <h3 class="modal-title">Create/Edit Marathon</h3>
     <div class="table-modal">
         <div class="table-modal-left">
@@ -28,26 +27,6 @@
                     id="marathon-description" cols="" rows="">
                 </textarea>
             </mat-form-field>
-            <!-- <div formArrayName="races" class="table-modal-right-races">
-                <div *ngFor="let race of data.marathon.races; let i = index" class="table-modal-right-races-row">
-
-                    <mat-form-field>
-                        <mat-label>Kilometers</mat-label>
-                        <input matNativeControl matInput [name]="'marathon-race-distance' + i"
-                            [id]="'race-distance-' + i" type="number" />
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <mat-label>Date</mat-label>
-                        <input [name]="'marathon-race-date-' + i" matInput [matDatepicker]="picker">
-                        <mat-hint>DD/MM/YYYY</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-
-                </div>
-                <button mat-raised-button (click)="addRace()">Add Race</button>
-            </div> -->
             <app-races-admin-panel-modal [races]="data.marathon.races"></app-races-admin-panel-modal>
         </div>
     </div>
