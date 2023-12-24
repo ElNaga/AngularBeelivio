@@ -44,7 +44,7 @@ export class RacesAdminPanelModalComponent implements OnInit {
 
   public addRace() {
     console.log("Activvating ADD RACE");
-    this.races.push(this.emptyRace);
+    this.races.push({ ...this.emptyRace });
     this.addRaceControl();
   }
 

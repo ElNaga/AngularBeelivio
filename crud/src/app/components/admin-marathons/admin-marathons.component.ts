@@ -51,7 +51,8 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
 
   public AddMarathon(inputMarathons: Marathon[]): void {
     console.log('printing from inside AddMarathon +++ BEFORE PUSH:\n', inputMarathons)
-    inputMarathons.push(this.emptyMarathon);
+    let index = inputMarathons.push(this.emptyMarathon);
+    this.openModal(inputMarathons[index - 1])
   }
 
   public deleteMarathon(inputMarathon: Marathon): void {
