@@ -32,6 +32,16 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
     disabled: false,
   }
 
+  emptyMarathon: Marathon = {
+    id: Date.now() + Math.random(),
+    name: '',
+    location: '',
+    distance: 0,
+    description: '',
+    date: new Date(),
+    races: [] as Race[]
+  }
+
   ngOnInit(): void {
     this.titleService.setTitle('Admin Panel');
   }
@@ -42,7 +52,7 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
 
   public AddMarathon(inputMarathons: Marathon[]): void {
     console.log('printing from inside AddMarathon +++ BEFORE PUSH:\n', inputMarathons)
-
+    inputMarathons.push(this.emptyMarathon);
   }
 
   public deleteMarathon(inputMarathon: Marathon): void {

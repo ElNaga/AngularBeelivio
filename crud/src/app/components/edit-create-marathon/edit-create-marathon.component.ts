@@ -33,16 +33,16 @@ export class EditCreateMarathonComponent {
     raceDate: [new Date(), Validators.required]
   })
 
-  get employees() {
-    return this.marathonForm.get('races') as FormArray;
-  }
+  // get races() {
+  // return this.marathonForm.get('races') as FormArray;
+  // }
 
-  addEmployeeControl() {
+  addRaceControl() {
     const racesForm = this.fb.group({
       raceDistance: [0, Validators.required],
       raceDate: [new Date(), Validators.required]
     })
-    this.employees.push(racesForm);
+    // this.races.push(racesForm);
   }
 
   marathonForm = this.fb.group({
@@ -51,7 +51,7 @@ export class EditCreateMarathonComponent {
     date: [new Date(), Validators.required],
     description: ['', Validators.required],
     distance: [0, Validators.required],
-    races: this.fb.array([])
+    // races: this.fb.array([])
   });
 
   // get races() {
@@ -66,7 +66,7 @@ export class EditCreateMarathonComponent {
 
   addRace(): void {
     this.data.marathon.races.push([] as unknown as Race)
-    this.addEmployeeControl();
+    this.addRaceControl();
   }
 
   onSubmit(): void {
@@ -74,7 +74,6 @@ export class EditCreateMarathonComponent {
   }
 
   ngOnInit() {
-
     console.log('\n\n\n');
     console.log(this.racesForm)
   }

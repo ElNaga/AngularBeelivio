@@ -1,22 +1,25 @@
-<div class="table-modal-right-races">
-    <div *ngFor="let race of races; let i = index" class="table-modal-right-races-row">
+<div [formGroup]="racesForm">
+    <div formArrayName="racesControl" class="table-modal-right-races">
+        <div *ngFor="let race of races; let i = index" [formGroupName]="i" class="table-modal-right-races-row">
 
-        <mat-form-field>
-            <mat-label>Kilometers</mat-label>
-            <!-- <input matNativeControl matInput formControlName="raceDistance" -->
-            <input [(ngModel)]="race.distance" matNativeControl matInput [name]="'marathon-race-distance' + i"
-                [id]="'race-distance-' + i" type="number" />
-        </mat-form-field>
+            <mat-form-field>
+                <mat-label>Kilometers</mat-label>
+                <!-- <input matNativeControl matInput formControlName="raceDistance" -->
+                <input formControlName="distance" [(ngModel)]="race.distance" matNativeControl matInput
+                    [name]="'marathon-race-distance' + i" [id]="'race-distance-' + i" type="number" />
+            </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Date</mat-label>
-            <input [name]="'marathon-race-date-' + i" matInput [matDatepicker]="picker">
-            <mat-hint>DD/MM/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+            <mat-form-field>
+                <mat-label>Date</mat-label>
+                <input formControlName="date" [(ngModel)]="race.date" [name]="'marathon-race-date-' + i" matInput
+                    [matDatepicker]="picker">
+                <mat-hint>DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
 
+        </div>
+        <button mat-raised-button (click)="addRace()">Add Race</button>
+        <!-- <button (click)="onAddRaceClick()" mat-raised-button>Add Race</button> -->
     </div>
-    <!-- <button mat-raised-button (click)="addRace()">Add Race</button> -->
-    <!-- <button (click)="onAddRaceClick()" mat-raised-button>Add Race</button> -->
 </div>
