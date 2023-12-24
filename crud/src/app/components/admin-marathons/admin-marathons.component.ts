@@ -5,6 +5,7 @@ import { SharedService } from 'src/app/modules/shared-module/shared.service';
 import { Marathon, Race } from 'src/app/models/marathon.interface';
 import { EditCreateMarathonComponent } from '../edit-create-marathon/edit-create-marathon.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-admin-marathons',
@@ -43,6 +44,7 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.titleService.setTitle('Admin Panel');
+    console.log('ASDIAEFAEFJKEFKAEFAEF', this.dialog)
   }
 
   ngOnDestroy(): void {
@@ -63,18 +65,27 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
     this.sharedService.initialiseMarathons();
   }
 
+  closeModal(): void {
+    console.log('LOGGING FROM CLOSE MODAL')
+    this.dialog.closeAll();
+  }
+
   openModal(marathonData: Marathon): void {
     console.log('logging from openModal, data:\n', marathonData)
     this.dialogMarathonData = marathonData;
     const dialogRef = this.dialog.open(EditCreateMarathonComponent, {
+      disableClose: true,
       data: { marathon: marathonData },
       panelClass: 'admin-modal',
     });
+    const sub = dialogRef.componentInstance.closeEvent.subscribe(() => {
+      dialogRef.close()
+    });
+
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       this.CheckMarathonRacesIfAnyAreEmpty();
-
     });
   }
 

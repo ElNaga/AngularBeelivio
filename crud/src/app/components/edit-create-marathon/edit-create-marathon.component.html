@@ -1,5 +1,8 @@
 <form [formGroup]="marathonForm">
-    <h3 class="modal-title">Create/Edit Marathon</h3>
+    <div class="table-modal-header">
+        <h3 class="modal-title">Create/Edit Marathon</h3>
+        <mat-icon (click)="close()" class="modal-close-button">close</mat-icon>
+    </div>
     <div class="table-modal">
         <div class="table-modal-left">
             <mat-form-field class="input-full-width">

@@ -1,6 +1,5 @@
 <div class="admin-pannel-wrapper">
     <h1>Admin Panel</h1>
-
     <div class="admin-pannel-filters-box">
         <form class="admin-card-form">
             <mat-form-field class="admin-card_mat_form_field">
@@ -15,7 +14,8 @@
                 [checked]="toggleOptions.checked" [disabled]="toggleOptions.disabled">
             </mat-slide-toggle>
         </div>
-        <button mat-fab [extended]="true" (click)="AddMarathon(marathons.marathons)"><mat-icon>add</mat-icon> Add
+        <button mat-fab [extended]="true" (closeModal)="closeModal()"
+            (click)="AddMarathon(marathons.marathons)"><mat-icon>add</mat-icon> Add
             Marathon</button>
     </div>
     <div class="table-wrapper">

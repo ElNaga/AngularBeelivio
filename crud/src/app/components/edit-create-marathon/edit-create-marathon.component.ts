@@ -1,8 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { race } from 'rxjs';
-import { RacesEnum } from 'src/app/enums/marthon-enums.enum';
 import { Marathon, Race } from 'src/app/models/marathon.interface';
 
 @Component({
@@ -11,20 +9,14 @@ import { Marathon, Race } from 'src/app/models/marathon.interface';
   styleUrls: ['./edit-create-marathon.component.css'],
 })
 export class EditCreateMarathonComponent {
-  // marathonForm = this.fb.group({
-  //   name: [this.isEditMode ? this.data.marathon.name : '', Validators.required],
-  //   location: [this.isEditMode ? this.data.marathon.location : '', Validators.required],
-  //   date: [this.isEditMode ? this.data.marathon.date : new Date(), Validators.required],
-  //   description: [this.isEditMode ? this.data.marathon.description : '', Validators.required],
-  // });
-
   isEditMode: boolean = false;
+  @Output() closeEvent = new EventEmitter<boolean>();
+
   constructor(
     public dialogRef: MatDialogRef<EditCreateMarathonComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { marathon: Marathon },
     private fb: FormBuilder,
   ) {
-    // this.isEmptyObjectOnEntry();
     console.log('LOGGING FROM CONSTRUCTOR EditCreateMarathonComponent MODAL COMPONENT \n', data);
   }
 
@@ -32,10 +24,6 @@ export class EditCreateMarathonComponent {
     raceDistance: [0, Validators.required],
     raceDate: [new Date(), Validators.required]
   })
-
-  // get races() {
-  // return this.marathonForm.get('races') as FormArray;
-  // }
 
   addRaceControl() {
     const racesForm = this.fb.group({
@@ -58,8 +46,6 @@ export class EditCreateMarathonComponent {
     this.isEditMode = (!!this.data.marathon.name);
   }
 
-
-
   addRace(): void {
     this.data.marathon.races.push([] as unknown as Race)
     this.addRaceControl();
@@ -68,5 +54,10 @@ export class EditCreateMarathonComponent {
   ngOnInit() {
     console.log('\n\n\n');
     console.log(this.racesForm)
+  }
+
+  close(): void {
+    console.log('logging fro mclose function');
+    this.closeEvent.emit();
   }
 }
