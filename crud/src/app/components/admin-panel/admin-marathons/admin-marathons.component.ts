@@ -53,7 +53,7 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
 
   public AddMarathon(inputMarathons: Marathon[]): void {
     console.log('printing from inside AddMarathon +++ BEFORE PUSH:\n', inputMarathons)
-    let index = inputMarathons.push(this.emptyMarathon);
+    let index = inputMarathons.push({ ...this.emptyMarathon });
     this.openModal(inputMarathons[index - 1])
   }
 
@@ -73,7 +73,13 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
       this.marathons.marathons = this.marathons.marathons.filter(marathon => this.dialogMarathonData !== marathon)
       console.log('Not properly init marahton deleted');
       let snackBarRef = this._snackBar.open('Marathon Deleted! Fields not filled!', 'OK', {
-        duration: 7000
+        duration: 7000,
+        verticalPosition: 'top'
+      });
+    } else if (this.dialogMarathonData.races.length === 0) {
+      let snackBarRef = this._snackBar.open('WARNING! No races added in marathon!', 'OK', {
+        duration: 7000,
+        verticalPosition: 'top'
       });
     }
     this.sharedService.initialiseMarathons()
@@ -88,7 +94,7 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
       panelClass: 'admin-modal',
     });
     const sub = dialogRef.componentInstance.closeEvent.subscribe((formsValidity: boolean) => {
-      this.closeModal(formsValidity)
+      this.closeModal(formsValidity);
     });
 
 

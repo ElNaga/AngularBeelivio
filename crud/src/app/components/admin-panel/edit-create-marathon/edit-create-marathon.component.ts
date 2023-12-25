@@ -79,7 +79,7 @@ export class EditCreateMarathonComponent {
     console.log('races FORM!', this.racesForm.valid)
     console.log('marathon FORM!', this.marathonForm.valid);
 
-    let formsValidity = this.marathonForm.valid && this.racesForm.valid
+    let formsValidity = (this.marathonForm.valid && this.racesForm.valid);
 
     this.closeEvent.emit(formsValidity);
   }
