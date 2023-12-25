@@ -30,7 +30,8 @@
                     id="marathon-description" cols="" rows="">
                 </textarea>
             </mat-form-field>
-            <app-races-admin-panel-modal [races]="data.marathon.races"></app-races-admin-panel-modal>
+            <app-races-admin-panel-modal [racesForm]="racesForm" (addRaceControlEvent)="addRaceControl()"
+                [races]="data.marathon.races"></app-races-admin-panel-modal>
         </div>
     </div>
 </form>

@@ -20,18 +20,34 @@ export class EditCreateMarathonComponent {
     console.log('LOGGING FROM CONSTRUCTOR EditCreateMarathonComponent MODAL COMPONENT \n', data);
   }
 
+  /// Imported code start
+
+  emptyRace = {
+    distance: 0,
+    date: new Date(),
+  }
+
+
   racesForm = this.fb.group({
-    raceDistance: [0, Validators.required],
-    raceDate: [new Date(), Validators.required]
-  })
+    racesControl: this.fb.array([])
+  });
+
+
+  get racesControls() {
+    return this.racesForm.get('racesControl') as FormArray;
+  }
 
   addRaceControl() {
-    const racesForm = this.fb.group({
-      raceDistance: [0, Validators.required],
-      raceDate: [new Date(), Validators.required]
-    })
-    // this.races.push(racesForm);
+    console.log('This is being called from the emmit, and is working from edit-create component');
+    const raceGroup = this.fb.group({
+      distance: ['', Validators.required],
+      date: ['', Validators.required],
+    });
+
+    this.racesControls.push(raceGroup);
   }
+
+  /// Imported code end
 
   marathonForm = this.fb.group({
     name: ['', Validators.required],
@@ -39,7 +55,6 @@ export class EditCreateMarathonComponent {
     date: [new Date(), Validators.required],
     description: ['', Validators.required],
     distance: [0, Validators.required],
-    // races: this.fb.array([])
   });
 
   isEmptyObjectOnEntry() {
@@ -47,17 +62,25 @@ export class EditCreateMarathonComponent {
   }
 
   addRace(): void {
-    this.data.marathon.races.push([] as unknown as Race)
+    this.data.marathon.races.push({ ...this.emptyRace })
     this.addRaceControl();
   }
 
   ngOnInit() {
-    console.log('\n\n\n');
-    console.log(this.racesForm)
+    console.log('\n\n\n this is init on edit-create ');
+    for (let race of this.data.marathon.races) {
+      console.log(this.data.marathon.races)
+      this.addRaceControl();
+    }
   }
 
   close(): void {
-    console.log('logging fro mclose function');
-    this.closeEvent.emit();
+    console.log('logging from close function');
+    console.log('races FORM!', this.racesForm.valid)
+    console.log('marathon FORM!', this.marathonForm.valid);
+
+    let formsValidity = this.marathonForm.valid && this.racesForm.valid
+
+    this.closeEvent.emit(formsValidity);
   }
 }
