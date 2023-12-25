@@ -14,7 +14,7 @@
                 [checked]="toggleOptions.checked" [disabled]="toggleOptions.disabled">
             </mat-slide-toggle>
         </div>
-        <button mat-fab [extended]="true" (closeModal)="closeModal()"
+        <button mat-fab [extended]="true" (closeModal)="closeModal($event)"
             (click)="AddMarathon(marathons.marathons)"><mat-icon>add</mat-icon> Add
             Marathon</button>
     </div>

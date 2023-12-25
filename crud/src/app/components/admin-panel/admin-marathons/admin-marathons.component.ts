@@ -5,7 +5,7 @@ import { SharedService } from 'src/app/modules/shared-module/shared.service';
 import { Marathon, Race } from 'src/app/models/marathon.interface';
 import { EditCreateMarathonComponent } from '../edit-create-marathon/edit-create-marathon.component';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogRef } from '@angular/cdk/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-marathons',
@@ -16,7 +16,8 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
   constructor(
     private titleService: Title,
     private sharedService: SharedService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) { }
 
   dialogMarathonData: Marathon = [] as unknown as Marathon;
@@ -44,7 +45,6 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.titleService.setTitle('Admin Panel');
-    console.log('ASDIAEFAEFJKEFKAEFAEF', this.dialog)
   }
 
   ngOnDestroy(): void {
@@ -65,9 +65,18 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
     this.sharedService.initialiseMarathons();
   }
 
-  closeModal(): void {
+  closeModal(formsValidity: any): void {
     console.log('LOGGING FROM CLOSE MODAL')
     this.dialog.closeAll();
+    console.log('these are the forms:', formsValidity)
+    if (!formsValidity) {
+      this.marathons.marathons = this.marathons.marathons.filter(marathon => this.dialogMarathonData !== marathon)
+      console.log('Not properly init marahton deleted');
+      let snackBarRef = this._snackBar.open('Marathon Deleted! Fields not filled!', 'OK', {
+        duration: 7000
+      });
+    }
+    this.sharedService.initialiseMarathons()
   }
 
   openModal(marathonData: Marathon): void {
@@ -78,8 +87,8 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
       data: { marathon: marathonData },
       panelClass: 'admin-modal',
     });
-    const sub = dialogRef.componentInstance.closeEvent.subscribe(() => {
-      dialogRef.close()
+    const sub = dialogRef.componentInstance.closeEvent.subscribe((formsValidity: boolean) => {
+      this.closeModal(formsValidity)
     });
 
 
