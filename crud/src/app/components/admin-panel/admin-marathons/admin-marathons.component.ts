@@ -1,11 +1,13 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ThemePalette } from '@angular/material/core';
 import { SharedService } from 'src/app/modules/shared-module/shared.service';
 import { Marathon, Race } from 'src/app/models/marathon.interface';
 import { EditCreateMarathonComponent } from '../edit-create-marathon/edit-create-marathon.component';
 import { MatDialog } from '@angular/material/dialog';
-import { RacesEnum } from 'src/app/enums/marthon-enums.enum';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { finalize, takeUntil } from "rxjs/operators";
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-admin-marathons',
@@ -13,10 +15,13 @@ import { RacesEnum } from 'src/app/enums/marthon-enums.enum';
   styleUrls: ['./admin-marathons.component.css'],
 })
 export class AdminMarathonsComponent implements OnInit, OnDestroy {
+  private readonly unsubscribe$: Subject<void> = new Subject();
+
   constructor(
     private titleService: Title,
     private sharedService: SharedService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) { }
 
   dialogMarathonData: Marathon = [] as unknown as Marathon;
@@ -32,6 +37,16 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
     disabled: false,
   }
 
+  emptyMarathon: Marathon = {
+    id: Date.now() + Math.random(),
+    name: '',
+    location: '',
+    distance: 0,
+    description: '',
+    date: new Date(),
+    races: [] as Race[]
+  }
+
   ngOnInit(): void {
     this.titleService.setTitle('Admin Panel');
   }
@@ -42,24 +57,8 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
 
   public AddMarathon(inputMarathons: Marathon[]): void {
     console.log('printing from inside AddMarathon +++ BEFORE PUSH:\n', inputMarathons)
-    const newMarathon = {
-      id: inputMarathons.length + 1,
-      name: '',
-      location: '',
-      distance: RacesEnum.Trka5km,
-      races: [{
-        distance: 0,
-        date: new Date()
-      }],
-      description: '',
-      date: new Date()
-    }
-
-    let index = inputMarathons.push(newMarathon);
-    console.log(index, 'ths is from index console lof')
-
-    console.log('printing from inside AddMarathon:\n', inputMarathons)
-    this.openModal(this.sharedService.marathons.marathons[index - 1]);
+    let index = inputMarathons.push({ ...this.emptyMarathon });
+    this.openModal(inputMarathons[index - 1])
   }
 
   public deleteMarathon(inputMarathon: Marathon): void {
@@ -70,19 +69,53 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
     this.sharedService.initialiseMarathons();
   }
 
+  closeModal(formsValidity: any): void {
+    console.log('LOGGING FROM CLOSE MODAL')
+    this.dialog.closeAll();
+    console.log('these are the forms:', formsValidity)
+    if (!formsValidity) {
+      this.marathons.marathons = this.marathons.marathons.filter(marathon => this.dialogMarathonData !== marathon)
+      console.log('Not properly init marahton deleted');
+      let snackBarRef = this._snackBar.open('Marathon Deleted! Fields not filled!', 'OK', {
+        duration: 7000,
+        verticalPosition: 'top'
+      });
+    } else if (this.dialogMarathonData.races.length === 0) {
+      let snackBarRef = this._snackBar.open('WARNING! No races added in marathon!', 'OK', {
+        duration: 7000,
+        verticalPosition: 'top'
+      });
+    }
+    this.sharedService.initialiseMarathons()
+  }
+
   openModal(marathonData: Marathon): void {
     console.log('logging from openModal, data:\n', marathonData)
     this.dialogMarathonData = marathonData;
     const dialogRef = this.dialog.open(EditCreateMarathonComponent, {
+      disableClose: true,
       data: { marathon: marathonData },
       panelClass: 'admin-modal',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-      this.CheckMarathonRacesIfAnyAreEmpty();
+    const sub = dialogRef.componentInstance.closeEvent
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((formsValidity: boolean) => {
+        this.closeModal(formsValidity);
+        console.log(sub);
+      });
 
-    });
+    console.log('closed::::', sub.closed);
+
+    dialogRef
+      .afterClosed()
+      .subscribe(result => {
+        console.log('The dialog was closed', result);
+        this.CheckMarathonRacesIfAnyAreEmpty();
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
+        console.log(this.unsubscribe$);
+      });
   }
 
   public CheckMarathonRacesIfAnyAreEmpty(): void {

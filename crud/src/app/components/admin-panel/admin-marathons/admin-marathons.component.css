@@ -1,5 +1,6 @@
 .admin-pannel-wrapper {
     margin-top: 5%;
+    justify-content: space-between;
 }
 
 .admin-pannel-filters-box {

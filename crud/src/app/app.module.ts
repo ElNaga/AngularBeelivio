@@ -8,11 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { FilterPipe } from './pipes/filter.pipe';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { MarathonsService, UserService } from './data.services';
-// import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -25,7 +23,6 @@ import { FeaturedCardComponent } from './components/featured-card/featured-card.
 import { MarathonRowCardComponent } from './components/marathon-row-card/marathon-row-card.component';
 import { PastCardComponent } from './components/past-card/past-card.component';
 import { MaratonDescriptionComponent } from './components/maraton-description/maraton-description.component';
-import { EditCreateMarathonComponent } from './components/edit-create-marathon/edit-create-marathon.component';
 import { SharedMaterialModule } from './modules/shared-module/shared-material-module.module';
 
 @NgModule({
@@ -39,13 +36,9 @@ import { SharedMaterialModule } from './modules/shared-module/shared-material-mo
     MarathonRowCardComponent,
     PastCardComponent,
     MaratonDescriptionComponent,
-    // EditCreateMarathonComponent,
   ],
   imports: [
     BrowserModule,
-    // HttpClientModule,
-    // HttpClientInMemoryWebApiModule.forRoot(MarathonsService),
-    // HttpClientInMemoryWebApiModule.forRoot(UserService),
     MatCardModule,
     MatButtonModule,
     MatIconModule,

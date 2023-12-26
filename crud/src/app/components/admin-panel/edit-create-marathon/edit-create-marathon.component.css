@@ -1,5 +1,12 @@
-.modal-title {
-    padding-left: 10px;
+.table-modal-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.modal-close-button {
+    background-color: rgb(169, 72, 72);
+    border-radius: 50%;
 }
 
 .table-modal {
@@ -20,6 +27,10 @@
 .table-modal-left {
     display: flex;
     flex-direction: column;
+}
+
+.input-full-width {
+    width: auto;
 }
 
 .marathon-date {

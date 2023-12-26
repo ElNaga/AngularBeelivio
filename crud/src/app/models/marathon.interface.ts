@@ -4,7 +4,7 @@ export interface Marathon {
   id: number;
   name: string;
   location: string;
-  distance: RacesEnum;
+  distance: RacesEnum | number;
   races: Race[];
   description: string;
   date: Date;
@@ -15,6 +15,6 @@ export interface MarathonsDb {
 }
 
 export interface Race {
-  distance: RacesEnum;
+  distance: RacesEnum | number;
   date: Date;
 }
