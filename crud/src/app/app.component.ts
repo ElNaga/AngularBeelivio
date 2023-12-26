@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 // import { HttpClient } from '@angular/common/http';
 // import { Observable } from 'rxjs/Observable';
 
-import { MarathonsService, UserService } from './data.services';
 import { Title } from '@angular/platform-browser';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +12,20 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private userService: UserService, private marathonsService: MarathonsService, private titleService: Title) { };
+  constructor(
+    private titleService: Title,
+    private dbService: NgxIndexedDBService,
+  ) { };
+
+
 
   async ngOnInit() {
-    this.titleService.setTitle('Marathons Page')
+    this.titleService.setTitle('Marathons Page');
+    this.dbService
+      .add('users',
+        { UserName: `Bruce Wayne` })
+      .subscribe((key) => {
+        console.log('key: ', key);
+      });
   }
 }

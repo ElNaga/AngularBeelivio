@@ -24,6 +24,8 @@ import { MarathonRowCardComponent } from './components/marathon-row-card/maratho
 import { PastCardComponent } from './components/past-card/past-card.component';
 import { MaratonDescriptionComponent } from './components/maraton-description/maraton-description.component';
 import { SharedMaterialModule } from './modules/shared-module/shared-material-module.module';
+import { NgxIndexedDBModule } from 'ngx-indexed-db';
+import { dbConfig } from './indexDB/db-config';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { SharedMaterialModule } from './modules/shared-module/shared-material-mo
     MatDialogModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedMaterialModule
+    SharedMaterialModule,
+    NgxIndexedDBModule.forRoot(dbConfig)
   ],
   providers: [
     MarathonsService,
@@ -59,3 +62,4 @@ import { SharedMaterialModule } from './modules/shared-module/shared-material-mo
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
