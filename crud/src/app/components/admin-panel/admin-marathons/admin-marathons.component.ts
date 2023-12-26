@@ -6,6 +6,8 @@ import { Marathon, Race } from 'src/app/models/marathon.interface';
 import { EditCreateMarathonComponent } from '../edit-create-marathon/edit-create-marathon.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { finalize, takeUntil } from "rxjs/operators";
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-admin-marathons',
@@ -13,6 +15,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./admin-marathons.component.css'],
 })
 export class AdminMarathonsComponent implements OnInit, OnDestroy {
+  private readonly unsubscribe$: Subject<void> = new Subject();
+
   constructor(
     private titleService: Title,
     private sharedService: SharedService,
@@ -93,15 +97,25 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
       data: { marathon: marathonData },
       panelClass: 'admin-modal',
     });
-    const sub = dialogRef.componentInstance.closeEvent.subscribe((formsValidity: boolean) => {
-      this.closeModal(formsValidity);
-    });
 
+    const sub = dialogRef.componentInstance.closeEvent
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((formsValidity: boolean) => {
+        this.closeModal(formsValidity);
+        console.log(sub);
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-      this.CheckMarathonRacesIfAnyAreEmpty();
-    });
+    console.log('closed::::', sub.closed);
+
+    dialogRef
+      .afterClosed()
+      .subscribe(result => {
+        console.log('The dialog was closed', result);
+        this.CheckMarathonRacesIfAnyAreEmpty();
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
+        console.log(this.unsubscribe$);
+      });
   }
 
   public CheckMarathonRacesIfAnyAreEmpty(): void {
