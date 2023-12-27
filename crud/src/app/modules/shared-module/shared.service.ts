@@ -4,7 +4,8 @@ import { MarathonsService } from '../../data.services';
 import { Marathon, MarathonsDb } from 'src/app/models/marathon.interface';
 import { UsersDb } from 'src/app/models/user.intereface';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
-import { firstValueFrom, take } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
+import { MarathonsModule } from '../marathons/marathons.module';
 
 @Injectable({
     providedIn: 'root'
@@ -46,40 +47,23 @@ export class SharedService {
 
     private async checkIfDbIsPopulated(): Promise<boolean> {
         let lengthDb: number;
-        let checkedValue: boolean;
         const dbMarathons = await firstValueFrom(this.dbService
             .getAll('marathons'))
-
         lengthDb = dbMarathons.length;
-
-
         return (lengthDb > 0);
     }
-    // private checkIfDbIsPopulated(): boolean {
-    //     let lengthDB: number;
-    //     let checkedValue: boolean;
-    //     const dbMarathons = this.dbService
-    //         .getAll('marathons')
-    //         .subscribe({
-    //             next: (v) => {
-    //                 lengthDB = v.length;
-    //                 if (lengthDB >= 0) {
-    //                     console.log(dbMarathons)
-    //                     checkedValue = true;
-    //                 } else {
-    //                     checkedValue = false;
-    //                 }
-    //                 console.log("This is length of VVVV  ", lengthDB)
-    //             },
-    //             error: (e) => console.error(e),
-    //             complete: () => console.info('complete')
-    //         });
 
-    //     return checkedValue;
-    // }
 
-    public initialiseMarathons(): void {
+    public async initialiseMarathons(): Promise<void> {
         const currentDate = new Date();
+        if (await this.checkIfDbIsPopulated()) {
+            const allMarathons = await firstValueFrom(this.dbService.getAll('marathons'))
+            const all = allMarathons.flatMap((x: any) => x.marathon)
+            console.log('k;iaerbfgarbgaekrbg;akrbghka;r', all)
+            console.log('k;iaerbfgarbgaekrbg;akrbghka;r', this.marathons.marathons)
+            this.marathons.marathons = all
+        }
+        console.log(await firstValueFrom(this.dbService.getAll('marathons')));
         this.futureMarathons = this.marathons.marathons.filter(marathon => marathon.date > currentDate);
         this.pastMarathons = this.marathons.marathons.filter(marathon => marathon.date < currentDate);
     }

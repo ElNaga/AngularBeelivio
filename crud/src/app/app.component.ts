@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs/Observable';
 import { SharedService } from './modules/shared-module/shared.service';
 
 import { Title } from '@angular/platform-browser';
