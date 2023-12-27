@@ -4,10 +4,10 @@ export const dbConfig: DBConfig = {
     name: 'index-db-marathons',
     version: 1,
     objectStoresMeta: [{
-        store: 'users',
-        storeConfig: { keyPath: 'UserName', autoIncrement: true },
+        store: 'marathons',
+        storeConfig: { keyPath: 'Marathons', autoIncrement: true },
         storeSchema: [
-            { name: 'UserName', keypath: 'UserName', options: { unique: false } },
+            { name: 'marathon', keypath: 'Marathons', options: { unique: false } },
         ]
     }]
 };

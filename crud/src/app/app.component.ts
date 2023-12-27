@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 // import { HttpClient } from '@angular/common/http';
 // import { Observable } from 'rxjs/Observable';
+import { SharedService } from './modules/shared-module/shared.service';
 
 import { Title } from '@angular/platform-browser';
-import { NgxIndexedDBService } from 'ngx-indexed-db';
 
 @Component({
   selector: 'app-root',
@@ -14,18 +14,13 @@ export class AppComponent implements OnInit {
 
   constructor(
     private titleService: Title,
-    private dbService: NgxIndexedDBService,
+    private sharedService: SharedService,
   ) { };
 
 
 
   async ngOnInit() {
+    this.sharedService.PopulateIfEmptyDb();
     this.titleService.setTitle('Marathons Page');
-    this.dbService
-      .add('users',
-        { UserName: `Bruce Wayne` })
-      .subscribe((key) => {
-        console.log('key: ', key);
-      });
   }
 }
