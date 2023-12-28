@@ -67,13 +67,19 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
   }
 
   public async deleteMarathon(inputMarathon: Marathon): Promise<void> {
-    const index = this.sharedService.marathons.marathons.findIndex(marathon => marathon === inputMarathon);
+    const index = this.sharedService.marathons.marathons.findIndex(marathon => marathon.id === inputMarathon.id);
     if (index > -1) {
       this.sharedService.marathons.marathons.splice(index, 1);
     }
+
     let dbMarathons = await this.dbService.getMarathons('marathons');
-    let indexToDelete = dbMarathons.flatMap((x: any) => x.marathon.id === inputMarathon.id).findIndex((val: any) => val === true)
-    console.log(indexToDelete)
+    let arrOfObjectToDelete = dbMarathons.filter((x: any) => {
+      console.log('x.Marathons:', x.marathon.id)
+      console.log('inputMarathon.id:', inputMarathon.id)
+      return x.marathon.id === inputMarathon.id;
+    });
+    console.log(arrOfObjectToDelete[0].Marathons)
+    let indexToDelete = arrOfObjectToDelete[0].Marathons
     this.dbService.DeleteMarathon('marathons', indexToDelete);
     await this.sharedService.initialiseMarathons();
   }
