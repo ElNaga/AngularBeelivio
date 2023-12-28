@@ -3,6 +3,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Marathon } from 'src/app/models/marathon.interface';
 import { IndexDbService } from 'src/app/indexDB/index-db-service.service';
+import { SharedService } from 'src/app/modules/shared-module/shared.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-edit-create-marathon',
@@ -14,6 +16,7 @@ export class EditCreateMarathonComponent {
   @Output() closeEvent = new EventEmitter<boolean>();
 
   constructor(
+    private sharedService: SharedService,
     private dbService: IndexDbService,
     public dialogRef: MatDialogRef<EditCreateMarathonComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { marathon: Marathon },
@@ -21,6 +24,8 @@ export class EditCreateMarathonComponent {
   ) {
     console.log('LOGGING FROM CONSTRUCTOR EditCreateMarathonComponent MODAL COMPONENT \n', data);
   }
+
+  todayDate = new Date();
 
   emptyRace = {
     distance: 0,
@@ -85,7 +90,10 @@ export class EditCreateMarathonComponent {
     this.closeEvent.emit(this.validForm);
   }
 
-  SaveMarathon(): void {
-    this.dbService.AddOrUpdateMarathon('marathons', this.data.marathon)
+  async SaveMarathon(): Promise<void> {
+    this.closeEvent.emit(this.validForm);
+    this.dbService.AddOrUpdateMarathon('marathons', this.data.marathon).pipe(take(1)).subscribe((x) => console.log('added data: ', x));
+    console.log('ASNDNAJEFASDANSDKKASDKASNDKNASKDNAKSDANSD', [this.data.marathon])
+    this.sharedService.initialiseMarathons();
   }
 }

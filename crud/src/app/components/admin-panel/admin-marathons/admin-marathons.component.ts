@@ -6,8 +6,8 @@ import { Marathon, Race } from 'src/app/models/marathon.interface';
 import { EditCreateMarathonComponent } from '../edit-create-marathon/edit-create-marathon.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { finalize, takeUntil } from "rxjs/operators";
-import { Subject } from 'rxjs';
+import { finalize, take, takeUntil } from "rxjs/operators";
+import { Subject, firstValueFrom } from 'rxjs';
 import { IndexDbService } from 'src/app/indexDB/index-db-service.service';
 
 @Component({
@@ -46,7 +46,10 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
     distance: 0,
     description: '',
     date: new Date(),
-    races: [] as Race[]
+    races: [{
+      distance: 0,
+      date: new Date(),
+    }]
   }
 
   ngOnInit(): void {
@@ -64,11 +67,14 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
   }
 
   public async deleteMarathon(inputMarathon: Marathon): Promise<void> {
-    // const index = this.sharedService.marathons.marathons.findIndex(marathon => marathon === inputMarathon);
-    // if (index > -1) {
-    //   this.sharedService.marathons.marathons.splice(index, 1);
-    // }
-    this.dbService.DeleteMarathon('marathons', inputMarathon.id);
+    const index = this.sharedService.marathons.marathons.findIndex(marathon => marathon === inputMarathon);
+    if (index > -1) {
+      this.sharedService.marathons.marathons.splice(index, 1);
+    }
+    let dbMarathons = await this.dbService.getMarathons('marathons');
+    let indexToDelete = dbMarathons.flatMap((x: any) => x.marathon.id === inputMarathon.id).findIndex((val: any) => val === true)
+    console.log(indexToDelete)
+    this.dbService.DeleteMarathon('marathons', indexToDelete);
     await this.sharedService.initialiseMarathons();
   }
 

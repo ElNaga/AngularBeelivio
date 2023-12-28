@@ -16,7 +16,7 @@
             <mat-form-field>
                 <mat-label>Date</mat-label>
                 <input name="marathon-date" matInput formControlName="date" [(ngModel)]="data.marathon.date"
-                    [matDatepicker]="picker">
+                    [min]="todayDate" [matDatepicker]="picker">
                 <mat-hint>DD/MM/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
