@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 
 
   async ngOnInit() {
-    this.sharedService.PopulateIfEmptyDb();
+    await this.sharedService.PopulateIfEmptyDb();
     this.titleService.setTitle('Marathons Page');
   }
 }

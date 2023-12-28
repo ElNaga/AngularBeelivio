@@ -61,15 +61,15 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
     this.openModal(inputMarathons[index - 1])
   }
 
-  public deleteMarathon(inputMarathon: Marathon): void {
+  public async deleteMarathon(inputMarathon: Marathon): Promise<void> {
     const index = this.sharedService.marathons.marathons.findIndex(marathon => marathon === inputMarathon);
     if (index > -1) {
       this.sharedService.marathons.marathons.splice(index, 1);
     }
-    this.sharedService.initialiseMarathons();
+    await this.sharedService.initialiseMarathons();
   }
 
-  closeModal(formsValidity: any): void {
+  async closeModal(formsValidity: any): Promise<void> {
     console.log('LOGGING FROM CLOSE MODAL')
     this.dialog.closeAll();
     console.log('these are the forms:', formsValidity)
@@ -86,7 +86,7 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
         verticalPosition: 'top'
       });
     }
-    this.sharedService.initialiseMarathons()
+    await this.sharedService.initialiseMarathons();
   }
 
   openModal(marathonData: Marathon): void {

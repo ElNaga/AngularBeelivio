@@ -23,9 +23,7 @@ export class SharedService {
         private dbService: NgxIndexedDBService,
     ) {
         this.marathons = this.marathonsService.createDb();
-
-        this.dbService.getAll('marathons');
-
+        console.log('This are the marathons in Marathon Service', this.marathons);
         this.users = this.userService.createDb();
         this.futureMarathons = [] as Marathon[];
         this.pastMarathons = [] as Marathon[];
@@ -42,7 +40,7 @@ export class SharedService {
                     });
             }
         }
-        this.initialiseMarathons();
+        await this.initialiseMarathons();
     }
 
     private async checkIfDbIsPopulated(): Promise<boolean> {
@@ -58,13 +56,15 @@ export class SharedService {
         const currentDate = new Date();
         if (await this.checkIfDbIsPopulated()) {
             const allMarathons = await firstValueFrom(this.dbService.getAll('marathons'))
-            const all = allMarathons.flatMap((x: any) => x.marathon)
-            console.log('k;iaerbfgarbgaekrbg;akrbghka;r', all)
-            console.log('k;iaerbfgarbgaekrbg;akrbghka;r', this.marathons.marathons)
-            this.marathons.marathons = all
+            const all: Marathon[] = allMarathons.flatMap((x: any) => x.marathon)
+            console.log('These are mapped marathons with flatMap', all)
+            console.log('this.marathons.marathons before OVERWRITE', this.marathons.marathons)
+            this.marathons.marathons = all;
+            console.log('These are "this.marathons.marathons"', this.marathons.marathons)
         }
         console.log(await firstValueFrom(this.dbService.getAll('marathons')));
         this.futureMarathons = this.marathons.marathons.filter(marathon => marathon.date > currentDate);
+        console.log('This are the new future marathons!', this.futureMarathons);
         this.pastMarathons = this.marathons.marathons.filter(marathon => marathon.date < currentDate);
     }
 }
