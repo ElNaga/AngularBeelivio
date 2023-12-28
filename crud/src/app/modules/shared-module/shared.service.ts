@@ -5,7 +5,6 @@ import { Marathon, MarathonsDb } from 'src/app/models/marathon.interface';
 import { UsersDb } from 'src/app/models/user.intereface';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { firstValueFrom } from 'rxjs';
-import { MarathonsModule } from '../marathons/marathons.module';
 
 @Injectable({
     providedIn: 'root'

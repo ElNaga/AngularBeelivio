@@ -22,6 +22,7 @@ import { MaratonDescriptionComponent } from './components/maraton-description/ma
 import { SharedMaterialModule } from './modules/shared-module/shared-material-module.module';
 import { NgxIndexedDBModule } from 'ngx-indexed-db';
 import { dbConfig } from './indexDB/db-config';
+import { IndexDbService } from './indexDB/index-db-service.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { dbConfig } from './indexDB/db-config';
   ],
   providers: [
     MarathonsService,
-    UserService
+    UserService,
+    IndexDbService,
   ],
   bootstrap: [AppComponent]
 })

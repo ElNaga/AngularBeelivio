@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize, takeUntil } from "rxjs/operators";
 import { Subject } from 'rxjs';
+import { IndexDbService } from 'src/app/indexDB/index-db-service.service';
 
 @Component({
   selector: 'app-admin-marathons',
@@ -18,6 +19,7 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
   private readonly unsubscribe$: Subject<void> = new Subject();
 
   constructor(
+    private dbService: IndexDbService,
     private titleService: Title,
     private sharedService: SharedService,
     private dialog: MatDialog,
@@ -62,10 +64,11 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
   }
 
   public async deleteMarathon(inputMarathon: Marathon): Promise<void> {
-    const index = this.sharedService.marathons.marathons.findIndex(marathon => marathon === inputMarathon);
-    if (index > -1) {
-      this.sharedService.marathons.marathons.splice(index, 1);
-    }
+    // const index = this.sharedService.marathons.marathons.findIndex(marathon => marathon === inputMarathon);
+    // if (index > -1) {
+    //   this.sharedService.marathons.marathons.splice(index, 1);
+    // }
+    this.dbService.DeleteMarathon('marathons', inputMarathon.id);
     await this.sharedService.initialiseMarathons();
   }
 
