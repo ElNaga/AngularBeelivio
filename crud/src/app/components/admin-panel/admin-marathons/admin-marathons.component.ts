@@ -6,8 +6,9 @@ import { Marathon, Race } from 'src/app/models/marathon.interface';
 import { EditCreateMarathonComponent } from '../edit-create-marathon/edit-create-marathon.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { finalize, takeUntil } from "rxjs/operators";
-import { Subject } from 'rxjs';
+import { finalize, take, takeUntil } from "rxjs/operators";
+import { Subject, firstValueFrom } from 'rxjs';
+import { IndexDbService } from 'src/app/indexDB/index-db-service.service';
 
 @Component({
   selector: 'app-admin-marathons',
@@ -18,6 +19,7 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
   private readonly unsubscribe$: Subject<void> = new Subject();
 
   constructor(
+    private dbService: IndexDbService,
     private titleService: Title,
     private sharedService: SharedService,
     private dialog: MatDialog,
@@ -44,7 +46,10 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
     distance: 0,
     description: '',
     date: new Date(),
-    races: [] as Race[]
+    races: [{
+      distance: 0,
+      date: new Date(),
+    }]
   }
 
   ngOnInit(): void {
@@ -61,15 +66,25 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
     this.openModal(inputMarathons[index - 1])
   }
 
-  public deleteMarathon(inputMarathon: Marathon): void {
-    const index = this.sharedService.marathons.marathons.findIndex(marathon => marathon === inputMarathon);
+  public async deleteMarathon(inputMarathon: Marathon): Promise<void> {
+    const index = this.sharedService.marathons.marathons.findIndex(marathon => marathon.id === inputMarathon.id);
     if (index > -1) {
       this.sharedService.marathons.marathons.splice(index, 1);
     }
-    this.sharedService.initialiseMarathons();
+
+    let dbMarathons = await this.dbService.getMarathons('marathons');
+    let arrOfObjectToDelete = dbMarathons.filter((x: any) => {
+      console.log('x.Marathons:', x.marathon.id)
+      console.log('inputMarathon.id:', inputMarathon.id)
+      return x.marathon.id === inputMarathon.id;
+    });
+    console.log(arrOfObjectToDelete[0].Marathons)
+    let indexToDelete = arrOfObjectToDelete[0].Marathons
+    this.dbService.DeleteMarathon('marathons', indexToDelete);
+    await this.sharedService.initialiseMarathons();
   }
 
-  closeModal(formsValidity: any): void {
+  async closeModal(formsValidity: any): Promise<void> {
     console.log('LOGGING FROM CLOSE MODAL')
     this.dialog.closeAll();
     console.log('these are the forms:', formsValidity)
@@ -86,7 +101,7 @@ export class AdminMarathonsComponent implements OnInit, OnDestroy {
         verticalPosition: 'top'
       });
     }
-    this.sharedService.initialiseMarathons()
+    await this.sharedService.initialiseMarathons();
   }
 
   openModal(marathonData: Marathon): void {

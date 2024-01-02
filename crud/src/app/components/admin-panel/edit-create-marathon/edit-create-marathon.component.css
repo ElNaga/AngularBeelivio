@@ -1,7 +1,12 @@
+.edit-create-main-class {
+    display: flex;
+    flex-direction: column;
+}
+
 .table-modal-header {
     display: flex;
     justify-content: space-between;
-    padding: 30px;
+    padding: 20px;
 }
 
 .modal-close-button {
@@ -71,4 +76,12 @@
     overflow: auto;
     width: auto;
     height: auto;
+}
+
+.edit-create-finalisation-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    padding-bottom: 30px;
 }

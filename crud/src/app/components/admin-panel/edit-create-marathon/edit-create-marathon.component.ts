@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Marathon, Race } from 'src/app/models/marathon.interface';
+import { Marathon } from 'src/app/models/marathon.interface';
+import { IndexDbService } from 'src/app/indexDB/index-db-service.service';
+import { SharedService } from 'src/app/modules/shared-module/shared.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-edit-create-marathon',
@@ -13,6 +16,8 @@ export class EditCreateMarathonComponent {
   @Output() closeEvent = new EventEmitter<boolean>();
 
   constructor(
+    private sharedService: SharedService,
+    private dbService: IndexDbService,
     public dialogRef: MatDialogRef<EditCreateMarathonComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { marathon: Marathon },
     private fb: FormBuilder,
@@ -20,7 +25,7 @@ export class EditCreateMarathonComponent {
     console.log('LOGGING FROM CONSTRUCTOR EditCreateMarathonComponent MODAL COMPONENT \n', data);
   }
 
-  /// Imported code start
+  todayDate = new Date();
 
   emptyRace = {
     distance: 0,
@@ -37,6 +42,11 @@ export class EditCreateMarathonComponent {
     return this.racesForm.get('racesControl') as FormArray;
   }
 
+  get validForm() {
+    console.log(this.marathonForm.valid && this.racesForm.valid);
+    return this.marathonForm.valid && this.racesForm.valid;
+  }
+
   addRaceControl() {
     console.log('This is being called from the emmit, and is working from edit-create component');
     const raceGroup = this.fb.group({
@@ -46,8 +56,6 @@ export class EditCreateMarathonComponent {
 
     this.racesControls.push(raceGroup);
   }
-
-  /// Imported code end
 
   marathonForm = this.fb.group({
     name: ['', Validators.required],
@@ -74,13 +82,18 @@ export class EditCreateMarathonComponent {
     }
   }
 
-  close(): void {
+  Close(): void {
     console.log('logging from close function');
     console.log('races FORM!', this.racesForm.valid)
     console.log('marathon FORM!', this.marathonForm.valid);
 
-    let formsValidity = (this.marathonForm.valid && this.racesForm.valid);
+    this.closeEvent.emit(this.validForm);
+  }
 
-    this.closeEvent.emit(formsValidity);
+  async SaveMarathon(): Promise<void> {
+    this.closeEvent.emit(this.validForm);
+    this.dbService.AddOrUpdateMarathon('marathons', this.data.marathon).pipe(take(1)).subscribe((x) => console.log('added data: ', x));
+    console.log('ASNDNAJEFASDANSDKKASDKASNDKNASKDNAKSDANSD', [this.data.marathon])
+    this.sharedService.initialiseMarathons();
   }
 }

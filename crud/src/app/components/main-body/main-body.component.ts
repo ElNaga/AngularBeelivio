@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Marathon } from 'src/app/models/marathon.interface';
 import { SharedService } from 'src/app/modules/shared-module/shared.service';
 
 @Component({
@@ -6,8 +7,17 @@ import { SharedService } from 'src/app/modules/shared-module/shared.service';
   templateUrl: './main-body.component.html',
   styleUrls: ['./main-body.component.css']
 })
-export class MainBodyComponent {
+export class MainBodyComponent implements OnInit {
   constructor(private sharedService: SharedService) { };
-  public futureMarathons = this.sharedService.futureMarathons
-  public pastMarathons = this.sharedService.pastMarathons
+
+  public futureMarathons: Marathon[] = [];
+  public pastMarathons: Marathon[] = [];
+
+  async ngOnInit(): Promise<void> {
+
+    console.log('From main-body comp:', this.sharedService.futureMarathons)
+    await this.sharedService.PopulateIfEmptyDb();
+    this.futureMarathons = this.sharedService.futureMarathons
+    this.pastMarathons = this.sharedService.pastMarathons
+  }
 }

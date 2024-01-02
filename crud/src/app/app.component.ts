@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs/Observable';
+import { SharedService } from './modules/shared-module/shared.service';
 
-import { MarathonsService, UserService } from './data.services';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -12,9 +10,15 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private userService: UserService, private marathonsService: MarathonsService, private titleService: Title) { };
+  constructor(
+    private titleService: Title,
+    private sharedService: SharedService,
+  ) { };
+
+
 
   async ngOnInit() {
-    this.titleService.setTitle('Marathons Page')
+    await this.sharedService.PopulateIfEmptyDb();
+    this.titleService.setTitle('Marathons Page');
   }
 }

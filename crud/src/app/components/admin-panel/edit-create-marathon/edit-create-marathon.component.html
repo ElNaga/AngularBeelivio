@@ -1,7 +1,6 @@
-<form [formGroup]="marathonForm">
+<form [formGroup]="marathonForm" class="edit-create-main-class">
     <div class="table-modal-header">
         <h3 class="modal-title">Create/Edit Marathon</h3>
-        <mat-icon (click)="close()" class="modal-close-button">close</mat-icon>
     </div>
     <div class="table-modal">
         <div class="table-modal-left">
@@ -17,7 +16,7 @@
             <mat-form-field>
                 <mat-label>Date</mat-label>
                 <input name="marathon-date" matInput formControlName="date" [(ngModel)]="data.marathon.date"
-                    [matDatepicker]="picker">
+                    [min]="todayDate" [matDatepicker]="picker">
                 <mat-hint>DD/MM/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -33,5 +32,10 @@
             <app-races-admin-panel-modal [racesForm]="racesForm" (addRaceControlEvent)="addRaceControl()"
                 [races]="data.marathon.races"></app-races-admin-panel-modal>
         </div>
+    </div>
+
+    <div class="edit-create-finalisation-buttons">
+        <button mat-raised-button (click)="Close()">Cancel</button>
+        <button mat-raised-button [disabled]="!validForm" (click)="SaveMarathon()">Save</button>
     </div>
 </form>

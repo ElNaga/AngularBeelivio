@@ -17,13 +17,12 @@ import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { MainBodyComponent } from './components/main-body/main-body.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FeaturedCardComponent } from './components/featured-card/featured-card.component';
-import { MarathonRowCardComponent } from './components/marathon-row-card/marathon-row-card.component';
-import { PastCardComponent } from './components/past-card/past-card.component';
 import { MaratonDescriptionComponent } from './components/maraton-description/maraton-description.component';
 import { SharedMaterialModule } from './modules/shared-module/shared-material-module.module';
+import { NgxIndexedDBModule } from 'ngx-indexed-db';
+import { dbConfig } from './indexDB/db-config';
+import { IndexDbService } from './indexDB/index-db-service.service';
 
 @NgModule({
   declarations: [
@@ -31,10 +30,6 @@ import { SharedMaterialModule } from './modules/shared-module/shared-material-mo
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    MainBodyComponent,
-    FeaturedCardComponent,
-    MarathonRowCardComponent,
-    PastCardComponent,
     MaratonDescriptionComponent,
   ],
   imports: [
@@ -50,12 +45,15 @@ import { SharedMaterialModule } from './modules/shared-module/shared-material-mo
     MatDialogModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedMaterialModule
+    SharedMaterialModule,
+    NgxIndexedDBModule.forRoot(dbConfig)
   ],
   providers: [
     MarathonsService,
-    UserService
+    UserService,
+    IndexDbService,
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
